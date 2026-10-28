@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<!-- saved from url=(0234)file:///C:/Users/ddsmi/Desktop/[2026]%20%EC%97%98%EB%A6%AC%EC%8A%A4%EC%BA%A0%ED%94%84%20aba4/WEEK%202/261028_/%EC%A0%84%EA%B5%AD%20%EC%83%81%EA%B0%80(%EC%83%81%EA%B6%8C)%EC%A0%95%EB%B3%B4%20%EC%A0%95%EB%A6%AC%20%EA%B2%B0%EA%B3%BC.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전국 상가(상권)정보 정리 결과</title>
+<style>
+:root{--ink:#222;--muted:#667;--line:#e3e3dc;--bg:#f4f4ef;--card:#fff;--accent:#b3122f}
+*{box-sizing:border-box}
+body{margin:0;font-family:"NanumGothic","나눔고딕","Malgun Gothic","맑은 고딕","Apple SD Gothic Neo",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding:16px 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+h1{font-size:20px;margin:0}
+.sub{margin:4px 0 0;font-size:12px;color:var(--muted)}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.controls label{font-size:13px;color:#444;display:flex;gap:6px;align-items:center}
+select{font:inherit;padding:8px 10px;border:1px solid #cfcfc4;border-radius:8px;background:#fff;min-width:190px}
+button{font:inherit;font-weight:700;padding:9px 14px;border:0;border-radius:8px;background:#173f5f;color:#fff;cursor:pointer}
+button:hover{background:#0e2c45}
+main{max-width:1120px;margin:0 auto;padding:16px 22px 36px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card .num{font-size:30px;font-weight:800;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.card .lab{font-size:12.5px;color:var(--muted);margin-top:4px}
+.card.accent{border-color:#eec3cc;background:#fff7f8}
+.card.accent .num{color:var(--accent)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.panel h2{font-size:16px;margin:0 0 4px}
+.panel .cap{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:920px){.grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#fafaf5;font-size:12.5px;color:#445;white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.hl td{background:#fff7f8;font-weight:700}
+.insight{font-size:13.5px;color:#333;background:#f5f5ee;border:1px solid var(--line);border-radius:8px;padding:9px 12px;margin:10px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;margin:2px 0 10px}
+.chip{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+svg{width:100%;height:auto;display:block}
+svg text{font-family:inherit}
+.lbl{font-size:12.5px;fill:#333}
+.lbl.on{font-weight:800;fill:#111}
+.val{font-size:11.5px;fill:#444;font-variant-numeric:tabular-nums}
+.tick{font-size:11px;fill:#999}
+.gl{stroke:#e9e9e2}
+.rowline{stroke:#f0f0ea}
+footer{font-size:12px;color:var(--muted);max-width:1120px;margin:0 auto;padding:4px 22px 34px}
+footer b{color:#445}
+@media print{header{position:static}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>전국 상가(상권)정보 정리 결과</h1>
+    <p class="sub">소상공인시장진흥공단 상가(상권)정보 2026년 6월 · 시도별 16개 파일 통합 · 2026-10-27 정리 · 오프라인 전용(외부 연결 없음)</p>
+  </div>
+  <div class="controls">
+    <label for="regionSel">지역 선택</label>
+    <select id="regionSel"><option value="전국">전국 (16개 지역 통합)</option><option value="경기도">경기도 (666,796)</option><option value="서울특별시">서울특별시 (550,172)</option><option value="전남광주통합특별시">전남광주통합특별시 (173,930)</option><option value="경상남도">경상남도 (171,378)</option><option value="부산광역시">부산광역시 (158,513)</option><option value="경상북도">경상북도 (143,581)</option><option value="인천광역시">인천광역시 (135,703)</option><option value="충청남도">충청남도 (123,358)</option><option value="대구광역시">대구광역시 (117,392)</option><option value="강원특별자치도">강원특별자치도 (109,062)</option><option value="전북특별자치도">전북특별자치도 (97,931)</option><option value="충청북도">충청북도 (92,816)</option><option value="대전광역시">대전광역시 (80,059)</option><option value="제주특별자치도">제주특별자치도 (58,438)</option><option value="울산광역시">울산광역시 (54,285)</option><option value="세종특별자치시">세종특별자치시 (15,655)</option></select>
+    <button id="reportBtn" type="button">분석 리포트 다운로드</button>
+  </div>
+</header>
+<main>
+  <section class="cards">
+    <div class="card"><div class="num" id="stTotal">2,749,069</div><div class="lab">전체 가게 수</div></div>
+    <div class="card"><div class="num">10</div><div class="lab">업종(대분류) 수</div></div>
+    <div class="card"><div class="num">16</div><div class="lab">지역(시도) 수</div></div>
+    <div class="card accent"><div class="num" id="stSel">2,749,069</div><div class="lab" id="stSelLab">전국 가게 수 (현재 선택)</div></div>
+  </section>
+
+  <section class="panel">
+    <h2>데이터 정리 과정 요약</h2>
+    <p class="cap">원본 16개 파일(2,772,484행 · 39열)을 아래 6단계로 정리해 2,749,069행 · 37열짜리 통합 파일 1개를 만들었다.</p>
+    <table>
+      <thead><tr><th style="width:56px">단계</th><th style="width:210px">발견된 문제</th><th>어떻게 고쳤는지</th><th class="n" style="width:120px">처리 개수</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><code>동정보</code>·<code>호정보</code> 열이 16개 파일 모두 100% 빈칸</td><td>정보가 없는 두 열을 삭제</td><td class="n">열 2개 삭제</td></tr>
+        <tr><td>2</td><td>층정보에 <code>지</code>, <code>B1</code>, <code>반지층</code>, <code>01</code> 등 텍스트 섞임</td><td>지하 → 음수(<code>지</code>→-1, <code>B1</code>→-1, <code>B2</code>→-2 …), 반지하 → 0, 앞자리 0 정리(<code>01</code>→1). 빈칸은 그대로 둠</td><td class="n">20,246행 수정</td></tr>
+        <tr><td>3</td><td>주소에 지역명 반복(예: “세종특별자치시 세종특별자치시 어진동”)</td><td>이어서 반복되는 지역명을 한 번만 남김</td><td class="n">15,816행 수정</td></tr>
+        <tr><td>4</td><td>가게 이름이 <code>업소명없음</code></td><td><code>이름 없음</code>으로 통일해 표기</td><td class="n">3,571행 수정</td></tr>
+        <tr><td>5</td><td>위도·경도가 한국 범위를 벗어남</td><td>위도 33.0~38.8°, 경도 124.5~132.0° 밖은 제거</td><td class="n">0행 (이상 없음)</td></tr>
+        <tr><td>6</td><td>같은 가게 중복(상호명+도로명주소+층정보 동일)</td><td>첫 1건만 남기고 나머지 삭제</td><td class="n">23,415행 삭제</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="grid">
+    <div class="panel">
+      <h2>1. 업종별 가게 수</h2>
+      <p class="cap" id="cap1">전국 · 상권업종 대분류 기준</p>
+      <div id="c1"><svg viewBox="0 0 760 402"><line class="gl" x1="109" y1="6" x2="109" y2="382"></line><text class="tick" x="109" y="396" text-anchor="middle">0</text><line class="gl" x1="386.5" y1="6" x2="386.5" y2="382"></line><text class="tick" x="386.5" y="396" text-anchor="middle">500,000</text><line class="gl" x1="664" y1="6" x2="664" y2="382"></line><text class="tick" x="664" y="396" text-anchor="middle">1,000,000</text><text class="lbl" x="101" y="36.5" text-anchor="end">음식</text><rect x="109" y="19" width="461.67008999999996" height="26" rx="3" fill="#d62728"><title>음식: 831,838개</title></rect><text class="val" x="576.67009" y="36.5">831,838 (30.3%)</text><text class="lbl" x="101" y="72.5" text-anchor="end">소매</text><rect x="109" y="55" width="356.74345500000004" height="26" rx="3" fill="#1f77b4"><title>소매: 642,781개</title></rect><text class="val" x="471.74345500000004" y="72.5">642,781 (23.4%)</text><text class="lbl" x="101" y="108.5" text-anchor="end">수리·개인</text><rect x="109" y="91" width="182.09106" height="26" rx="3" fill="#2ca02c"><title>수리·개인: 328,092개</title></rect><text class="val" x="297.09105999999997" y="108.5">328,092 (11.9%)</text><text class="lbl" x="101" y="144.5" text-anchor="end">과학·기술</text><rect x="109" y="127" width="161.53941" height="26" rx="3" fill="#9467bd"><title>과학·기술: 291,062개</title></rect><text class="val" x="276.53941" y="144.5">291,062 (10.6%)</text><text class="lbl" x="101" y="180.5" text-anchor="end">교육</text><rect x="109" y="163" width="100.43058" height="26" rx="3" fill="#ff7f0e"><title>교육: 180,956개</title></rect><text class="val" x="215.43058000000002" y="180.5">180,956 (6.6%)</text><text class="lbl" x="101" y="216.5" text-anchor="end">시설관리·임대</text><rect x="109" y="199" width="66.054435" height="26" rx="3" fill="#8c564b"><title>시설관리·임대: 119,017개</title></rect><text class="val" x="181.054435" y="216.5">119,017 (4.3%)</text><text class="lbl" x="101" y="252.5" text-anchor="end">예술·스포츠</text><rect x="109" y="235" width="63.486450000000005" height="26" rx="3" fill="#e377c2"><title>예술·스포츠: 114,390개</title></rect><text class="val" x="178.48645" y="252.5">114,390 (4.2%)</text><text class="lbl" x="101" y="288.5" text-anchor="end">부동산</text><rect x="109" y="271" width="58.159005" height="26" rx="3" fill="#17becf"><title>부동산: 104,791개</title></rect><text class="val" x="173.159005" y="288.5">104,791 (3.8%)</text><text class="lbl" x="101" y="324.5" text-anchor="end">숙박</text><rect x="109" y="307" width="43.782285" height="26" rx="3" fill="#bcbd22"><title>숙박: 78,887개</title></rect><text class="val" x="158.782285" y="324.5">78,887 (2.9%)</text><text class="lbl" x="101" y="360.5" text-anchor="end">보건의료</text><rect x="109" y="343" width="31.776525" height="26" rx="3" fill="#7f7f7f"><title>보건의료: 57,255개</title></rect><text class="val" x="146.776525" y="360.5">57,255 (2.1%)</text></svg></div>
+      <p class="insight" id="i1">전국 음식(30.3%)와 소매(23.4%)가 두 대주류로, 생활밀착형 업종이 상가의 대부분을 차지한다.</p>
+    </div>
+    <div class="panel">
+      <h2>2. 지역별 가게 수</h2>
+      <p class="cap">16개 시도 전체 · 선택한 지역은 진하게 표시</p>
+      <div id="c2"><svg viewBox="0 0 760 570"><line class="gl" x1="130.5" y1="6" x2="130.5" y2="550"></line><text class="tick" x="130.5" y="564" text-anchor="middle">0</text><line class="gl" x1="263.875" y1="6" x2="263.875" y2="550"></line><text class="tick" x="263.875" y="564" text-anchor="middle">200,000</text><line class="gl" x1="397.25" y1="6" x2="397.25" y2="550"></line><text class="tick" x="397.25" y="564" text-anchor="middle">400,000</text><line class="gl" x1="530.625" y1="6" x2="530.625" y2="550"></line><text class="tick" x="530.625" y="564" text-anchor="middle">600,000</text><line class="gl" x1="664" y1="6" x2="664" y2="550"></line><text class="tick" x="664" y="564" text-anchor="middle">800,000</text><text class="lbl" x="122.5" y="35" text-anchor="end">경기도</text><rect x="130.5" y="19" width="444.6695825" height="23" rx="3" fill="#4c72b0"><title>경기도: 666,796개</title></rect><text class="val" x="581.1695824999999" y="35">666,796</text><text class="lbl" x="122.5" y="68" text-anchor="end">서울특별시</text><rect x="130.5" y="52" width="366.89595249999996" height="23" rx="3" fill="#4c72b0"><title>서울특별시: 550,172개</title></rect><text class="val" x="503.39595249999996" y="68">550,172</text><text class="lbl" x="122.5" y="101" text-anchor="end">전남광주통합특별시</text><rect x="130.5" y="85" width="115.98956875" height="23" rx="3" fill="#4c72b0"><title>전남광주통합특별시: 173,930개</title></rect><text class="val" x="252.48956875" y="101">173,930</text><text class="lbl" x="122.5" y="134" text-anchor="end">경상남도</text><rect x="130.5" y="118" width="114.28770375" height="23" rx="3" fill="#4c72b0"><title>경상남도: 171,378개</title></rect><text class="val" x="250.78770375" y="134">171,378</text><text class="lbl" x="122.5" y="167" text-anchor="end">부산광역시</text><rect x="130.5" y="151" width="105.70835687499999" height="23" rx="3" fill="#4c72b0"><title>부산광역시: 158,513개</title></rect><text class="val" x="242.208356875" y="167">158,513</text><text class="lbl" x="122.5" y="200" text-anchor="end">경상북도</text><rect x="130.5" y="184" width="95.750579375" height="23" rx="3" fill="#4c72b0"><title>경상북도: 143,581개</title></rect><text class="val" x="232.250579375" y="200">143,581</text><text class="lbl" x="122.5" y="233" text-anchor="end">인천광역시</text><rect x="130.5" y="217" width="90.496938125" height="23" rx="3" fill="#4c72b0"><title>인천광역시: 135,703개</title></rect><text class="val" x="226.99693812499999" y="233">135,703</text><text class="lbl" x="122.5" y="266" text-anchor="end">충청남도</text><rect x="130.5" y="250" width="82.26436625" height="23" rx="3" fill="#4c72b0"><title>충청남도: 123,358개</title></rect><text class="val" x="218.76436625" y="266">123,358</text><text class="lbl" x="122.5" y="299" text-anchor="end">대구광역시</text><rect x="130.5" y="283" width="78.28579" height="23" rx="3" fill="#4c72b0"><title>대구광역시: 117,392개</title></rect><text class="val" x="214.78579000000002" y="299">117,392</text><text class="lbl" x="122.5" y="332" text-anchor="end">강원특별자치도</text><rect x="130.5" y="316" width="72.73072124999999" height="23" rx="3" fill="#4c72b0"><title>강원특별자치도: 109,062개</title></rect><text class="val" x="209.23072125" y="332">109,062</text><text class="lbl" x="122.5" y="365" text-anchor="end">전북특별자치도</text><rect x="130.5" y="349" width="65.307735625" height="23" rx="3" fill="#4c72b0"><title>전북특별자치도: 97,931개</title></rect><text class="val" x="201.80773562500002" y="365">97,931</text><text class="lbl" x="122.5" y="398" text-anchor="end">충청북도</text><rect x="130.5" y="382" width="61.89667" height="23" rx="3" fill="#4c72b0"><title>충청북도: 92,816개</title></rect><text class="val" x="198.39667" y="398">92,816</text><text class="lbl" x="122.5" y="431" text-anchor="end">대전광역시</text><rect x="130.5" y="415" width="53.389345625000004" height="23" rx="3" fill="#4c72b0"><title>대전광역시: 80,059개</title></rect><text class="val" x="189.889345625" y="431">80,059</text><text class="lbl" x="122.5" y="464" text-anchor="end">제주특별자치도</text><rect x="130.5" y="448" width="38.97084125" height="23" rx="3" fill="#4c72b0"><title>제주특별자치도: 58,438개</title></rect><text class="val" x="175.47084125" y="464">58,438</text><text class="lbl" x="122.5" y="497" text-anchor="end">울산광역시</text><rect x="130.5" y="481" width="36.201309375" height="23" rx="3" fill="#4c72b0"><title>울산광역시: 54,285개</title></rect><text class="val" x="172.701309375" y="497">54,285</text><text class="lbl" x="122.5" y="530" text-anchor="end">세종특별자치시</text><rect x="130.5" y="514" width="10.439928125" height="23" rx="3" fill="#4c72b0"><title>세종특별자치시: 15,655개</title></rect><text class="val" x="146.939928125" y="530">15,655</text></svg></div>
+      <p class="insight" id="i2">경기(24.3%)·서울(20.0%) 등 수도권에만 전체의 절반 가까이가 몰려 있고, 세종은 0.6%로 가장 적다.</p>
+    </div>
+    <div class="panel">
+      <h2>3. 지역 × 업종 비교</h2>
+      <p class="cap">막대 한 줄이 지역 1개 · 색은 업종(위와 동일한 색) · 선택한 지역 강조</p>
+      <div class="legend" id="lg3"><span><span class="chip" style="background:#d62728"></span>음식</span><span><span class="chip" style="background:#1f77b4"></span>소매</span><span><span class="chip" style="background:#2ca02c"></span>수리·개인</span><span><span class="chip" style="background:#9467bd"></span>과학·기술</span><span><span class="chip" style="background:#ff7f0e"></span>교육</span><span><span class="chip" style="background:#8c564b"></span>시설관리·임대</span><span><span class="chip" style="background:#e377c2"></span>예술·스포츠</span><span><span class="chip" style="background:#17becf"></span>부동산</span><span><span class="chip" style="background:#bcbd22"></span>숙박</span><span><span class="chip" style="background:#7f7f7f"></span>보건의료</span></div>
+      <div id="c3"><svg viewBox="0 0 760 554"><line class="gl" x1="148" y1="6" x2="148" y2="534"></line><text class="tick" x="148" y="548" text-anchor="middle">0</text><line class="gl" x1="305.76939273780886" y1="6" x2="305.76939273780886" y2="534"></line><text class="tick" x="305.76939273780886" y="548" text-anchor="middle">200,000</text><line class="gl" x1="463.5387854756178" y1="6" x2="463.5387854756178" y2="534"></line><text class="tick" x="463.5387854756178" y="548" text-anchor="middle">400,000</text><line class="gl" x1="621.3081782134266" y1="6" x2="621.3081782134266" y2="534"></line><text class="tick" x="621.3081782134266" y="548" text-anchor="middle">600,000</text><line class="gl" x1="779.0775709512355" y1="6" x2="779.0775709512355" y2="534"></line><text class="tick" x="779.0775709512355" y="548" text-anchor="middle">800,000</text><text class="lbl" x="140" y="34.5" text-anchor="end">경기도</text><rect x="148.0" y="19" width="145.2" height="22" fill="#d62728"><title>경기도 · 음식: 184,021개 (27.6%)</title></rect><rect x="293.2" y="19" width="117.1" height="22" fill="#1f77b4"><title>경기도 · 소매: 148,445개 (22.3%)</title></rect><rect x="410.3" y="19" width="63.5" height="22" fill="#2ca02c"><title>경기도 · 수리·개인: 80,479개 (12.1%)</title></rect><rect x="473.8" y="19" width="62.7" height="22" fill="#9467bd"><title>경기도 · 과학·기술: 79,470개 (11.9%)</title></rect><rect x="536.4" y="19" width="43.9" height="22" fill="#ff7f0e"><title>경기도 · 교육: 55,685개 (8.4%)</title></rect><rect x="580.4" y="19" width="23.8" height="22" fill="#8c564b"><title>경기도 · 시설관리·임대: 30,176개 (4.5%)</title></rect><rect x="604.2" y="19" width="23.9" height="22" fill="#e377c2"><title>경기도 · 예술·스포츠: 30,261개 (4.5%)</title></rect><rect x="628.0" y="19" width="23.7" height="22" fill="#17becf"><title>경기도 · 부동산: 29,987개 (4.5%)</title></rect><rect x="651.7" y="19" width="8.6" height="22" fill="#bcbd22"><title>경기도 · 숙박: 10,886개 (1.6%)</title></rect><rect x="660.3" y="19" width="13.7" height="22" fill="#7f7f7f"><title>경기도 · 보건의료: 17,386개 (2.6%)</title></rect><text class="val" x="680" y="34.5">666,796</text><text class="lbl" x="140" y="66.5" text-anchor="end">서울특별시</text><rect x="148.0" y="51" width="110.5" height="22" fill="#d62728"><title>서울특별시 · 음식: 140,026개 (25.5%)</title></rect><rect x="258.5" y="51" width="87.1" height="22" fill="#1f77b4"><title>서울특별시 · 소매: 110,374개 (20.1%)</title></rect><rect x="345.5" y="51" width="42.1" height="22" fill="#2ca02c"><title>서울특별시 · 수리·개인: 53,426개 (9.7%)</title></rect><rect x="387.7" y="51" width="78.9" height="22" fill="#9467bd"><title>서울특별시 · 과학·기술: 99,978개 (18.2%)</title></rect><rect x="466.5" y="51" width="34.7" height="22" fill="#ff7f0e"><title>서울특별시 · 교육: 43,997개 (8.0%)</title></rect><rect x="501.2" y="51" width="20.6" height="22" fill="#8c564b"><title>서울특별시 · 시설관리·임대: 26,097개 (4.7%)</title></rect><rect x="521.8" y="51" width="16.4" height="22" fill="#e377c2"><title>서울특별시 · 예술·스포츠: 20,832개 (3.8%)</title></rect><rect x="538.3" y="51" width="19.4" height="22" fill="#17becf"><title>서울특별시 · 부동산: 24,539개 (4.5%)</title></rect><rect x="557.6" y="51" width="9.7" height="22" fill="#bcbd22"><title>서울특별시 · 숙박: 12,262개 (2.2%)</title></rect><rect x="567.3" y="51" width="14.7" height="22" fill="#7f7f7f"><title>서울특별시 · 보건의료: 18,641개 (3.4%)</title></rect><text class="val" x="588.0015117067289" y="66.5">550,172</text><text class="lbl" x="140" y="98.5" text-anchor="end">전남광주통합특별시</text><rect x="148.0" y="83" width="43.7" height="22" fill="#d62728"><title>전남광주통합특별시 · 음식: 55,414개 (31.9%)</title></rect><rect x="191.7" y="83" width="36.2" height="22" fill="#1f77b4"><title>전남광주통합특별시 · 소매: 45,930개 (26.4%)</title></rect><rect x="227.9" y="83" width="18.4" height="22" fill="#2ca02c"><title>전남광주통합특별시 · 수리·개인: 23,382개 (13.4%)</title></rect><rect x="246.4" y="83" width="10.7" height="22" fill="#9467bd"><title>전남광주통합특별시 · 과학·기술: 13,590개 (7.8%)</title></rect><rect x="257.1" y="83" width="6.2" height="22" fill="#ff7f0e"><title>전남광주통합특별시 · 교육: 7,852개 (4.5%)</title></rect><rect x="263.3" y="83" width="5.8" height="22" fill="#8c564b"><title>전남광주통합특별시 · 시설관리·임대: 7,365개 (4.2%)</title></rect><rect x="269.1" y="83" width="5.6" height="22" fill="#e377c2"><title>전남광주통합특별시 · 예술·스포츠: 7,061개 (4.1%)</title></rect><rect x="274.7" y="83" width="4.6" height="22" fill="#17becf"><title>전남광주통합특별시 · 부동산: 5,769개 (3.3%)</title></rect><rect x="279.2" y="83" width="4.6" height="22" fill="#bcbd22"><title>전남광주통합특별시 · 숙박: 5,774개 (3.3%)</title></rect><rect x="283.8" y="83" width="1.4" height="22" fill="#7f7f7f"><title>전남광주통합특별시 · 보건의료: 1,793개 (1.0%)</title></rect><text class="val" x="291.2041523944355" y="98.5">173,930</text><text class="lbl" x="140" y="130.5" text-anchor="end">경상남도</text><rect x="148.0" y="115" width="49.5" height="22" fill="#d62728"><title>경상남도 · 음식: 62,776개 (36.6%)</title></rect><rect x="197.5" y="115" width="33.1" height="22" fill="#1f77b4"><title>경상남도 · 소매: 41,942개 (24.5%)</title></rect><rect x="230.6" y="115" width="17.5" height="22" fill="#2ca02c"><title>경상남도 · 수리·개인: 22,224개 (13.0%)</title></rect><rect x="248.1" y="115" width="8.1" height="22" fill="#9467bd"><title>경상남도 · 과학·기술: 10,310개 (6.0%)</title></rect><rect x="256.3" y="115" width="6.2" height="22" fill="#ff7f0e"><title>경상남도 · 교육: 7,906개 (4.6%)</title></rect><rect x="262.5" y="115" width="4.8" height="22" fill="#8c564b"><title>경상남도 · 시설관리·임대: 6,069개 (3.5%)</title></rect><rect x="267.3" y="115" width="5.1" height="22" fill="#e377c2"><title>경상남도 · 예술·스포츠: 6,486개 (3.8%)</title></rect><rect x="272.4" y="115" width="4.3" height="22" fill="#17becf"><title>경상남도 · 부동산: 5,498개 (3.2%)</title></rect><rect x="276.7" y="115" width="5.3" height="22" fill="#bcbd22"><title>경상남도 · 숙박: 6,740개 (3.9%)</title></rect><rect x="282.1" y="115" width="1.1" height="22" fill="#7f7f7f"><title>경상남도 · 보건의료: 1,427개 (0.8%)</title></rect><text class="val" x="289.19101494310104" y="130.5">171,378</text><text class="lbl" x="140" y="162.5" text-anchor="end">부산광역시</text><rect x="148.0" y="147" width="42.0" height="22" fill="#d62728"><title>부산광역시 · 음식: 53,269개 (33.6%)</title></rect><rect x="190.0" y="147" width="30.4" height="22" fill="#1f77b4"><title>부산광역시 · 소매: 38,598개 (24.4%)</title></rect><rect x="220.5" y="147" width="16.6" height="22" fill="#2ca02c"><title>부산광역시 · 수리·개인: 21,007개 (13.3%)</title></rect><rect x="237.0" y="147" width="11.0" height="22" fill="#9467bd"><title>부산광역시 · 과학·기술: 13,951개 (8.8%)</title></rect><rect x="248.0" y="147" width="6.3" height="22" fill="#ff7f0e"><title>부산광역시 · 교육: 7,967개 (5.0%)</title></rect><rect x="254.3" y="147" width="4.9" height="22" fill="#8c564b"><title>부산광역시 · 시설관리·임대: 6,188개 (3.9%)</title></rect><rect x="259.2" y="147" width="4.8" height="22" fill="#e377c2"><title>부산광역시 · 예술·스포츠: 6,048개 (3.8%)</title></rect><rect x="264.0" y="147" width="4.7" height="22" fill="#17becf"><title>부산광역시 · 부동산: 6,018개 (3.8%)</title></rect><rect x="268.7" y="147" width="2.5" height="22" fill="#bcbd22"><title>부산광역시 · 숙박: 3,131개 (2.0%)</title></rect><rect x="271.2" y="147" width="1.8" height="22" fill="#7f7f7f"><title>부산광역시 · 보건의료: 2,336개 (1.5%)</title></rect><text class="val" x="279.04249875524147" y="162.5">158,513</text><text class="lbl" x="140" y="194.5" text-anchor="end">경상북도</text><rect x="148.0" y="179" width="40.8" height="22" fill="#d62728"><title>경상북도 · 음식: 51,674개 (36.0%)</title></rect><rect x="188.8" y="179" width="29.6" height="22" fill="#1f77b4"><title>경상북도 · 소매: 37,499개 (26.1%)</title></rect><rect x="218.3" y="179" width="14.4" height="22" fill="#2ca02c"><title>경상북도 · 수리·개인: 18,223개 (12.7%)</title></rect><rect x="232.7" y="179" width="6.3" height="22" fill="#9467bd"><title>경상북도 · 과학·기술: 8,035개 (5.6%)</title></rect><rect x="239.1" y="179" width="4.6" height="22" fill="#ff7f0e"><title>경상북도 · 교육: 5,768개 (4.0%)</title></rect><rect x="243.6" y="179" width="4.3" height="22" fill="#8c564b"><title>경상북도 · 시설관리·임대: 5,397개 (3.8%)</title></rect><rect x="247.9" y="179" width="4.4" height="22" fill="#e377c2"><title>경상북도 · 예술·스포츠: 5,531개 (3.9%)</title></rect><rect x="252.2" y="179" width="2.9" height="22" fill="#17becf"><title>경상북도 · 부동산: 3,707개 (2.6%)</title></rect><rect x="255.2" y="179" width="5.4" height="22" fill="#bcbd22"><title>경상북도 · 숙박: 6,804개 (4.7%)</title></rect><rect x="260.5" y="179" width="0.8" height="22" fill="#7f7f7f"><title>경상북도 · 보건의료: 943개 (0.7%)</title></rect><text class="val" x="267.2634358934367" y="194.5">143,581</text><text class="lbl" x="140" y="226.5" text-anchor="end">인천광역시</text><rect x="148.0" y="211" width="32.0" height="22" fill="#d62728"><title>인천광역시 · 음식: 40,550개 (29.9%)</title></rect><rect x="180.0" y="211" width="24.6" height="22" fill="#1f77b4"><title>인천광역시 · 소매: 31,214개 (23.0%)</title></rect><rect x="204.6" y="211" width="13.5" height="22" fill="#2ca02c"><title>인천광역시 · 수리·개인: 17,051개 (12.6%)</title></rect><rect x="218.1" y="211" width="9.6" height="22" fill="#9467bd"><title>인천광역시 · 과학·기술: 12,170개 (9.0%)</title></rect><rect x="227.7" y="211" width="7.6" height="22" fill="#ff7f0e"><title>인천광역시 · 교육: 9,633개 (7.1%)</title></rect><rect x="235.3" y="211" width="4.5" height="22" fill="#8c564b"><title>인천광역시 · 시설관리·임대: 5,663개 (4.2%)</title></rect><rect x="239.7" y="211" width="5.4" height="22" fill="#e377c2"><title>인천광역시 · 예술·스포츠: 6,874개 (5.1%)</title></rect><rect x="245.2" y="211" width="4.4" height="22" fill="#17becf"><title>인천광역시 · 부동산: 5,523개 (4.1%)</title></rect><rect x="249.5" y="211" width="2.6" height="22" fill="#bcbd22"><title>인천광역시 · 숙박: 3,334개 (2.5%)</title></rect><rect x="252.1" y="211" width="2.9" height="22" fill="#7f7f7f"><title>인천광역시 · 보건의료: 3,691개 (2.7%)</title></rect><text class="val" x="261.04889951349435" y="226.5">135,703</text><text class="lbl" x="140" y="258.5" text-anchor="end">충청남도</text><rect x="148.0" y="243" width="31.6" height="22" fill="#d62728"><title>충청남도 · 음식: 40,007개 (32.4%)</title></rect><rect x="179.6" y="243" width="25.7" height="22" fill="#1f77b4"><title>충청남도 · 소매: 32,641개 (26.5%)</title></rect><rect x="205.3" y="243" width="11.7" height="22" fill="#2ca02c"><title>충청남도 · 수리·개인: 14,795개 (12.0%)</title></rect><rect x="217.0" y="243" width="6.3" height="22" fill="#9467bd"><title>충청남도 · 과학·기술: 7,965개 (6.5%)</title></rect><rect x="223.3" y="243" width="5.1" height="22" fill="#ff7f0e"><title>충청남도 · 교육: 6,476개 (5.2%)</title></rect><rect x="228.4" y="243" width="4.4" height="22" fill="#8c564b"><title>충청남도 · 시설관리·임대: 5,559개 (4.5%)</title></rect><rect x="232.8" y="243" width="4.0" height="22" fill="#e377c2"><title>충청남도 · 예술·스포츠: 5,129개 (4.2%)</title></rect><rect x="236.8" y="243" width="3.0" height="22" fill="#17becf"><title>충청남도 · 부동산: 3,865개 (3.1%)</title></rect><rect x="239.9" y="243" width="3.8" height="22" fill="#bcbd22"><title>충청남도 · 숙박: 4,779개 (3.9%)</title></rect><rect x="243.6" y="243" width="1.7" height="22" fill="#7f7f7f"><title>충청남도 · 보건의료: 2,142개 (1.7%)</title></rect><text class="val" x="251.31058374675314" y="258.5">123,358</text><text class="lbl" x="140" y="290.5" text-anchor="end">대구광역시</text><rect x="148.0" y="275" width="29.7" height="22" fill="#d62728"><title>대구광역시 · 음식: 37,608개 (32.0%)</title></rect><rect x="177.7" y="275" width="23.9" height="22" fill="#1f77b4"><title>대구광역시 · 소매: 30,241개 (25.8%)</title></rect><rect x="201.5" y="275" width="12.9" height="22" fill="#2ca02c"><title>대구광역시 · 수리·개인: 16,304개 (13.9%)</title></rect><rect x="214.4" y="275" width="8.0" height="22" fill="#9467bd"><title>대구광역시 · 과학·기술: 10,132개 (8.6%)</title></rect><rect x="222.4" y="275" width="5.5" height="22" fill="#ff7f0e"><title>대구광역시 · 교육: 6,969개 (5.9%)</title></rect><rect x="227.9" y="275" width="3.4" height="22" fill="#8c564b"><title>대구광역시 · 시설관리·임대: 4,325개 (3.7%)</title></rect><rect x="231.3" y="275" width="4.0" height="22" fill="#e377c2"><title>대구광역시 · 예술·스포츠: 5,023개 (4.3%)</title></rect><rect x="235.2" y="275" width="3.3" height="22" fill="#17becf"><title>대구광역시 · 부동산: 4,147개 (3.5%)</title></rect><rect x="238.5" y="275" width="0.9" height="22" fill="#bcbd22"><title>대구광역시 · 숙박: 1,119개 (1.0%)</title></rect><rect x="239.4" y="275" width="1.2" height="22" fill="#7f7f7f"><title>대구광역시 · 보건의료: 1,524개 (1.3%)</title></rect><text class="val" x="246.6043227613843" y="290.5">117,392</text><text class="lbl" x="140" y="322.5" text-anchor="end">강원특별자치도</text><rect x="148.0" y="307" width="29.4" height="22" fill="#d62728"><title>강원특별자치도 · 음식: 37,295개 (34.2%)</title></rect><rect x="177.4" y="307" width="20.7" height="22" fill="#1f77b4"><title>강원특별자치도 · 소매: 26,217개 (24.0%)</title></rect><rect x="198.1" y="307" width="9.3" height="22" fill="#2ca02c"><title>강원특별자치도 · 수리·개인: 11,771개 (10.8%)</title></rect><rect x="207.4" y="307" width="4.8" height="22" fill="#9467bd"><title>강원특별자치도 · 과학·기술: 6,130개 (5.6%)</title></rect><rect x="212.2" y="307" width="4.8" height="22" fill="#ff7f0e"><title>강원특별자치도 · 교육: 6,119개 (5.6%)</title></rect><rect x="217.0" y="307" width="3.4" height="22" fill="#8c564b"><title>강원특별자치도 · 시설관리·임대: 4,344개 (4.0%)</title></rect><rect x="220.5" y="307" width="3.3" height="22" fill="#e377c2"><title>강원특별자치도 · 예술·스포츠: 4,202개 (3.9%)</title></rect><rect x="223.8" y="307" width="1.9" height="22" fill="#17becf"><title>강원특별자치도 · 부동산: 2,432개 (2.2%)</title></rect><rect x="225.7" y="307" width="6.9" height="22" fill="#bcbd22"><title>강원특별자치도 · 숙박: 8,758개 (8.0%)</title></rect><rect x="232.6" y="307" width="1.4" height="22" fill="#7f7f7f"><title>강원특별자치도 · 보건의료: 1,794개 (1.6%)</title></rect><text class="val" x="240.03322755385454" y="322.5">109,062</text><text class="lbl" x="140" y="354.5" text-anchor="end">전북특별자치도</text><rect x="148.0" y="339" width="24.2" height="22" fill="#d62728"><title>전북특별자치도 · 음식: 30,665개 (31.3%)</title></rect><rect x="172.2" y="339" width="22.2" height="22" fill="#1f77b4"><title>전북특별자치도 · 소매: 28,172개 (28.8%)</title></rect><rect x="194.4" y="339" width="10.0" height="22" fill="#2ca02c"><title>전북특별자치도 · 수리·개인: 12,627개 (12.9%)</title></rect><rect x="204.4" y="339" width="5.4" height="22" fill="#9467bd"><title>전북특별자치도 · 과학·기술: 6,847개 (7.0%)</title></rect><rect x="209.8" y="339" width="3.6" height="22" fill="#ff7f0e"><title>전북특별자치도 · 교육: 4,547개 (4.6%)</title></rect><rect x="213.4" y="339" width="3.2" height="22" fill="#8c564b"><title>전북특별자치도 · 시설관리·임대: 4,050개 (4.1%)</title></rect><rect x="216.6" y="339" width="3.1" height="22" fill="#e377c2"><title>전북특별자치도 · 예술·스포츠: 3,959개 (4.0%)</title></rect><rect x="219.7" y="339" width="2.4" height="22" fill="#17becf"><title>전북특별자치도 · 부동산: 3,012개 (3.1%)</title></rect><rect x="222.1" y="339" width="2.5" height="22" fill="#bcbd22"><title>전북특별자치도 · 숙박: 3,177개 (3.2%)</title></rect><rect x="224.6" y="339" width="0.8" height="22" fill="#7f7f7f"><title>전북특별자치도 · 보건의료: 875개 (0.9%)</title></rect><text class="val" x="231.2525720010318" y="354.5">97,931</text><text class="lbl" x="140" y="386.5" text-anchor="end">충청북도</text><rect x="148.0" y="371" width="24.4" height="22" fill="#d62728"><title>충청북도 · 음식: 30,952개 (33.3%)</title></rect><rect x="172.4" y="371" width="18.7" height="22" fill="#1f77b4"><title>충청북도 · 소매: 23,678개 (25.5%)</title></rect><rect x="191.1" y="371" width="9.1" height="22" fill="#2ca02c"><title>충청북도 · 수리·개인: 11,537개 (12.4%)</title></rect><rect x="200.2" y="371" width="4.6" height="22" fill="#9467bd"><title>충청북도 · 과학·기술: 5,879개 (6.3%)</title></rect><rect x="204.8" y="371" width="4.1" height="22" fill="#ff7f0e"><title>충청북도 · 교육: 5,202개 (5.6%)</title></rect><rect x="208.9" y="371" width="3.4" height="22" fill="#8c564b"><title>충청북도 · 시설관리·임대: 4,277개 (4.6%)</title></rect><rect x="212.3" y="371" width="3.3" height="22" fill="#e377c2"><title>충청북도 · 예술·스포츠: 4,220개 (4.5%)</title></rect><rect x="215.6" y="371" width="2.2" height="22" fill="#17becf"><title>충청북도 · 부동산: 2,795개 (3.0%)</title></rect><rect x="217.8" y="371" width="2.1" height="22" fill="#bcbd22"><title>충청북도 · 숙박: 2,627개 (2.8%)</title></rect><rect x="219.9" y="371" width="1.3" height="22" fill="#7f7f7f"><title>충청북도 · 보건의료: 1,649개 (1.8%)</title></rect><text class="val" x="227.21761978176232" y="386.5">92,816</text><text class="lbl" x="140" y="418.5" text-anchor="end">대전광역시</text><rect x="148.0" y="403" width="18.6" height="22" fill="#d62728"><title>대전광역시 · 음식: 23,628개 (29.5%)</title></rect><rect x="166.6" y="403" width="15.8" height="22" fill="#1f77b4"><title>대전광역시 · 소매: 20,065개 (25.1%)</title></rect><rect x="182.5" y="403" width="8.6" height="22" fill="#2ca02c"><title>대전광역시 · 수리·개인: 10,917개 (13.6%)</title></rect><rect x="191.1" y="403" width="5.8" height="22" fill="#9467bd"><title>대전광역시 · 과학·기술: 7,368개 (9.2%)</title></rect><rect x="196.9" y="403" width="4.2" height="22" fill="#ff7f0e"><title>대전광역시 · 교육: 5,380개 (6.7%)</title></rect><rect x="201.1" y="403" width="2.7" height="22" fill="#8c564b"><title>대전광역시 · 시설관리·임대: 3,484개 (4.4%)</title></rect><rect x="203.9" y="403" width="2.9" height="22" fill="#e377c2"><title>대전광역시 · 예술·스포츠: 3,618개 (4.5%)</title></rect><rect x="206.7" y="403" width="2.2" height="22" fill="#17becf"><title>대전광역시 · 부동산: 2,783개 (3.5%)</title></rect><rect x="208.9" y="403" width="0.8" height="22" fill="#bcbd22"><title>대전광역시 · 숙박: 881개 (1.1%)</title></rect><rect x="209.7" y="403" width="1.5" height="22" fill="#7f7f7f"><title>대전광역시 · 보건의료: 1,935개 (2.4%)</title></rect><text class="val" x="217.1542990659812" y="418.5">80,059</text><text class="lbl" x="140" y="450.5" text-anchor="end">제주특별자치도</text><rect x="148.0" y="435" width="15.4" height="22" fill="#d62728"><title>제주특별자치도 · 음식: 19,471개 (33.3%)</title></rect><rect x="163.4" y="435" width="9.6" height="22" fill="#1f77b4"><title>제주특별자치도 · 소매: 12,227개 (20.9%)</title></rect><rect x="173.0" y="435" width="4.0" height="22" fill="#2ca02c"><title>제주특별자치도 · 수리·개인: 5,086개 (8.7%)</title></rect><rect x="177.0" y="435" width="3.3" height="22" fill="#9467bd"><title>제주특별자치도 · 과학·기술: 4,196개 (7.2%)</title></rect><rect x="180.3" y="435" width="2.2" height="22" fill="#ff7f0e"><title>제주특별자치도 · 교육: 2,833개 (4.8%)</title></rect><rect x="182.6" y="435" width="2.5" height="22" fill="#8c564b"><title>제주특별자치도 · 시설관리·임대: 3,192개 (5.5%)</title></rect><rect x="185.1" y="435" width="1.5" height="22" fill="#e377c2"><title>제주특별자치도 · 예술·스포츠: 1,870개 (3.2%)</title></rect><rect x="186.6" y="435" width="1.4" height="22" fill="#17becf"><title>제주특별자치도 · 부동산: 1,751개 (3.0%)</title></rect><rect x="187.9" y="435" width="5.9" height="22" fill="#bcbd22"><title>제주특별자치도 · 숙박: 7,441개 (12.7%)</title></rect><rect x="193.8" y="435" width="0.8" height="22" fill="#7f7f7f"><title>제주특별자치도 · 보건의료: 371개 (0.6%)</title></rect><text class="val" x="200.09863886406038" y="450.5">58,438</text><text class="lbl" x="140" y="482.5" text-anchor="end">울산광역시</text><rect x="148.0" y="467" width="15.4" height="22" fill="#d62728"><title>울산광역시 · 음식: 19,520개 (36.0%)</title></rect><rect x="163.4" y="467" width="9.9" height="22" fill="#1f77b4"><title>울산광역시 · 소매: 12,492개 (23.0%)</title></rect><rect x="173.3" y="467" width="6.0" height="22" fill="#2ca02c"><title>울산광역시 · 수리·개인: 7,635개 (14.1%)</title></rect><rect x="179.3" y="467" width="2.8" height="22" fill="#9467bd"><title>울산광역시 · 과학·기술: 3,558개 (6.6%)</title></rect><rect x="182.1" y="467" width="2.4" height="22" fill="#ff7f0e"><title>울산광역시 · 교육: 3,012개 (5.5%)</title></rect><rect x="184.5" y="467" width="1.7" height="22" fill="#8c564b"><title>울산광역시 · 시설관리·임대: 2,112개 (3.9%)</title></rect><rect x="186.1" y="467" width="2.0" height="22" fill="#e377c2"><title>울산광역시 · 예술·스포츠: 2,523개 (4.6%)</title></rect><rect x="188.1" y="467" width="1.5" height="22" fill="#17becf"><title>울산광역시 · 부동산: 1,867개 (3.4%)</title></rect><rect x="189.6" y="467" width="0.8" height="22" fill="#bcbd22"><title>울산광역시 · 숙박: 1,052개 (1.9%)</title></rect><rect x="190.4" y="467" width="0.8" height="22" fill="#7f7f7f"><title>울산광역시 · 보건의료: 514개 (0.9%)</title></rect><text class="val" x="196.82255742385976" y="482.5">54,285</text><text class="lbl" x="140" y="514.5" text-anchor="end">세종특별자치시</text><rect x="148.0" y="499" width="3.9" height="22" fill="#d62728"><title>세종특별자치시 · 음식: 4,962개 (31.7%)</title></rect><rect x="151.9" y="499" width="2.4" height="22" fill="#1f77b4"><title>세종특별자치시 · 소매: 3,046개 (19.5%)</title></rect><rect x="154.3" y="499" width="1.3" height="22" fill="#2ca02c"><title>세종특별자치시 · 수리·개인: 1,628개 (10.4%)</title></rect><rect x="155.6" y="499" width="1.2" height="22" fill="#9467bd"><title>세종특별자치시 · 과학·기술: 1,483개 (9.5%)</title></rect><rect x="156.8" y="499" width="1.3" height="22" fill="#ff7f0e"><title>세종특별자치시 · 교육: 1,610개 (10.3%)</title></rect><rect x="158.0" y="499" width="0.8" height="22" fill="#8c564b"><title>세종특별자치시 · 시설관리·임대: 719개 (4.6%)</title></rect><rect x="158.8" y="499" width="0.8" height="22" fill="#e377c2"><title>세종특별자치시 · 예술·스포츠: 753개 (4.8%)</title></rect><rect x="159.6" y="499" width="0.9" height="22" fill="#17becf"><title>세종특별자치시 · 부동산: 1,098개 (7.0%)</title></rect><rect x="160.5" y="499" width="0.8" height="22" fill="#bcbd22"><title>세종특별자치시 · 숙박: 122개 (0.8%)</title></rect><rect x="161.3" y="499" width="0.8" height="22" fill="#7f7f7f"><title>세종특별자치시 · 보건의료: 234개 (1.5%)</title></rect><text class="val" x="166.349399216552" y="514.5">15,655</text></svg></div>
+      <p class="insight" id="i3">음식 업종 비중은 경상남도(36.6%)가 가장 높고 서울특별시(25.5%)가 가장 낮아, 지역마다 상가 구성이 다르다.</p>
+    </div>
+    <div class="panel">
+      <h2>4. 음식점 세부 종류 TOP 15</h2>
+      <p class="cap" id="cap4">전국 · 음식점 831,838곳 중</p>
+      <div id="c4"><svg viewBox="0 0 760 537"><line class="gl" x1="130.5" y1="6" x2="130.5" y2="517"></line><text class="tick" x="130.5" y="531" text-anchor="middle">0</text><line class="gl" x1="263.875" y1="6" x2="263.875" y2="517"></line><text class="tick" x="263.875" y="531" text-anchor="middle">50,000</text><line class="gl" x1="397.25" y1="6" x2="397.25" y2="517"></line><text class="tick" x="397.25" y="531" text-anchor="middle">100,000</text><line class="gl" x1="530.625" y1="6" x2="530.625" y2="517"></line><text class="tick" x="530.625" y="531" text-anchor="middle">150,000</text><line class="gl" x1="664" y1="6" x2="664" y2="517"></line><text class="tick" x="664" y="531" text-anchor="middle">200,000</text><text class="lbl" x="122.5" y="35" text-anchor="end">백반/한정식</text><rect x="130.5" y="19" width="477.082375" height="23" rx="3" fill="#d62728"><title>백반/한정식: 178,850개</title></rect><text class="val" x="613.582375" y="35">178,850 (21.5%)</text><text class="lbl" x="122.5" y="68" text-anchor="end">카페</text><rect x="130.5" y="52" width="323.7091275" height="23" rx="3" fill="#d62728"><title>카페: 121,353개</title></rect><text class="val" x="460.2091275" y="68">121,353 (14.6%)</text><text class="lbl" x="122.5" y="101" text-anchor="end">요리 주점</text><rect x="130.5" y="85" width="148.0702575" height="23" rx="3" fill="#d62728"><title>요리 주점: 55,509개</title></rect><text class="val" x="284.5702575" y="101">55,509 (6.7%)</text><text class="lbl" x="122.5" y="134" text-anchor="end">돼지고기 구이/찜</text><rect x="130.5" y="118" width="146.5817925" height="23" rx="3" fill="#d62728"><title>돼지고기 구이/찜: 54,951개</title></rect><text class="val" x="283.0817925" y="134">54,951 (6.6%)</text><text class="lbl" x="122.5" y="167" text-anchor="end">김밥/만두/분식</text><rect x="130.5" y="151" width="117.3940075" height="23" rx="3" fill="#d62728"><title>김밥/만두/분식: 44,009개</title></rect><text class="val" x="253.8940075" y="167">44,009 (5.3%)</text><text class="lbl" x="122.5" y="200" text-anchor="end">치킨</text><rect x="130.5" y="184" width="106.1905075" height="23" rx="3" fill="#d62728"><title>치킨: 39,809개</title></rect><text class="val" x="242.6905075" y="200">39,809 (4.8%)</text><text class="lbl" x="122.5" y="233" text-anchor="end">국/탕/찌개류</text><rect x="130.5" y="217" width="84.4343775" height="23" rx="3" fill="#d62728"><title>국/탕/찌개류: 31,653개</title></rect><text class="val" x="220.93437749999998" y="233">31,653 (3.8%)</text><text class="lbl" x="122.5" y="266" text-anchor="end">빵/도넛</text><rect x="130.5" y="250" width="82.59647000000001" height="23" rx="3" fill="#d62728"><title>빵/도넛: 30,964개</title></rect><text class="val" x="219.09647" y="266">30,964 (3.7%)</text><text class="lbl" x="122.5" y="299" text-anchor="end">중국집</text><rect x="130.5" y="283" width="72.93211749999999" height="23" rx="3" fill="#d62728"><title>중국집: 27,341개</title></rect><text class="val" x="209.4321175" y="299">27,341 (3.3%)</text><text class="lbl" x="122.5" y="332" text-anchor="end">일반 유흥 주점</text><rect x="130.5" y="316" width="66.1086525" height="23" rx="3" fill="#d62728"><title>일반 유흥 주점: 24,783개</title></rect><text class="val" x="202.6086525" y="332">24,783 (3.0%)</text><text class="lbl" x="122.5" y="365" text-anchor="end">국수/칼국수</text><rect x="130.5" y="349" width="54.155585" height="23" rx="3" fill="#d62728"><title>국수/칼국수: 20,302개</title></rect><text class="val" x="190.655585" y="365">20,302 (2.4%)</text><text class="lbl" x="122.5" y="398" text-anchor="end">경양식</text><rect x="130.5" y="382" width="51.797515" height="23" rx="3" fill="#d62728"><title>경양식: 19,418개</title></rect><text class="val" x="188.297515" y="398">19,418 (2.3%)</text><text class="lbl" x="122.5" y="431" text-anchor="end">일식 회/초밥</text><rect x="130.5" y="415" width="51.6401325" height="23" rx="3" fill="#d62728"><title>일식 회/초밥: 19,359개</title></rect><text class="val" x="188.1401325" y="431">19,359 (2.3%)</text><text class="lbl" x="122.5" y="464" text-anchor="end">횟집</text><rect x="130.5" y="448" width="51.28002" height="23" rx="3" fill="#d62728"><title>횟집: 19,224개</title></rect><text class="val" x="187.78002" y="464">19,224 (2.3%)</text><text class="lbl" x="122.5" y="497" text-anchor="end">피자</text><rect x="130.5" y="481" width="46.291795" height="23" rx="3" fill="#d62728"><title>피자: 17,354개</title></rect><text class="val" x="182.791795" y="497">17,354 (2.1%)</text></svg></div>
+      <p class="insight" id="i4">전국 음식점 가운데 백반/한정식(21.5%)와 카페(14.6%)가 두 아로 많다.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <b>데이터 출처</b> 소상공인시장진흥공단 상가(상권)정보 202606 (시도별 16개 CSV) ·
+  <b>정리 기준</b> 빈칸 열 제거, 층정보 숫자화, 주소 지역명 반복 제거, 무명 상호 표기, 좌표 범위 확인, 이름+주소+층 중복 제거 후 통합 ·
+  원본 2,772,484행 → 정리 후 2,749,069행 · 이 페이지는 인터넷 연결 없이 동작합니다.
+</footer>
+
+<script>
+"use strict";
+const DATA = {"강원특별자치도":{"total":109062,"kinds":{"소매":26217,"수리·개인":11771,"교육":6119,"음식":37295,"시설관리·임대":4344,"예술·스포츠":4202,"보건의료":1794,"숙박":8758,"과학·기술":6130,"부동산":2432},"food":{"백반/한정식":8862,"빵/도넛":1147,"피자":657,"버거":201,"카페":5122,"경양식":683,"횟집":1352,"구내식당":169,"일식 회/초밥":491,"국/탕/찌개류":1531,"생맥주 전문":409,"국수/칼국수":1372,"그 외 기타 간이 음식점":516,"중국집":1156,"치킨":1683,"베트남식 전문":148,"떡/한과":365,"요리 주점":2567,"돼지고기 구이/찜":2649,"일반 유흥 주점":1147,"김밥/만두/분식":1659,"해산물 구이/찜":675,"닭/오리고기 구이/찜":699,"일식 카레/돈가스/덮밥":49,"족발/보쌈":314,"전/부침개":61,"소고기 구이/찜":373,"곱창 전골/구이":217,"뷔페":105,"냉면/밀면":170,"아이스크림/빙수":88,"무도 유흥 주점":47,"일식 면 요리":73,"마라탕/훠궈":114,"기타 한식 음식점":170,"기타 동남아식 전문":18,"파스타/스테이크":64,"토스트/샌드위치/샐러드":115,"기타 서양식 음식점":30,"패밀리레스토랑":12,"복 요리 전문":6,"기타 일식 음식점":9}},"경기도":{"total":666796,"kinds":{"음식":184021,"소매":148445,"숙박":10886,"교육":55685,"수리·개인":80479,"과학·기술":79470,"보건의료":17386,"예술·스포츠":30261,"시설관리·임대":30176,"부동산":29987},"food":{"빵/도넛":7417,"백반/한정식":36155,"일식 회/초밥":4421,"카페":26794,"경양식":4071,"피자":4341,"버거":1488,"국수/칼국수":4297,"구내식당":1936,"국/탕/찌개류":8058,"닭/오리고기 구이/찜":2093,"돼지고기 구이/찜":11902,"김밥/만두/분식":10392,"치킨":9448,"파스타/스테이크":525,"패밀리레스토랑":90,"마라탕/훠궈":1322,"베트남식 전문":1641,"일식 카레/돈가스/덮밥":831,"중국집":6428,"해산물 구이/찜":3556,"뷔페":1477,"요리 주점":10651,"족발/보쌈":1888,"소고기 구이/찜":1388,"생맥주 전문":3665,"떡/한과":1791,"아이스크림/빙수":792,"그 외 기타 간이 음식점":1740,"토스트/샌드위치/샐러드":809,"횟집":2842,"기타 한식 음식점":584,"곱창 전골/구이":1670,"일반 유흥 주점":5027,"기타 서양식 음식점":273,"냉면/밀면":806,"기타 동남아식 전문":187,"일식 면 요리":583,"무도 유흥 주점":213,"전/부침개":234,"복 요리 전문":79,"분류 안된 외국식 음식점":9,"기타 일식 음식점":107}},"경상남도":{"total":171378,"kinds":{"소매":41942,"음식":62776,"수리·개인":22224,"예술·스포츠":6486,"숙박":6740,"과학·기술":10310,"시설관리·임대":6069,"교육":7906,"보건의료":1427,"부동산":5498},"food":{"백반/한정식":14328,"피자":1107,"버거":358,"뷔페":163,"베트남식 전문":369,"일식 회/초밥":901,"카페":8280,"빵/도넛":2025,"소고기 구이/찜":414,"경양식":1005,"패밀리레스토랑":18,"해산물 구이/찜":1255,"치킨":3131,"일반 유흥 주점":3625,"중국집":1858,"떡/한과":770,"요리 주점":3973,"김밥/만두/분식":2979,"횟집":2461,"국수/칼국수":1560,"그 외 기타 간이 음식점":624,"닭/오리고기 구이/찜":539,"돼지고기 구이/찜":4629,"기타 한식 음식점":129,"족발/보쌈":520,"국/탕/찌개류":2293,"냉면/밀면":418,"구내식당":667,"곱창 전골/구이":421,"아이스크림/빙수":174,"마라탕/훠궈":207,"복 요리 전문":88,"일식 면 요리":139,"무도 유흥 주점":96,"토스트/샌드위치/샐러드":213,"생맥주 전문":692,"일식 카레/돈가스/덮밥":102,"기타 일식 음식점":52,"파스타/스테이크":100,"전/부침개":34,"기타 서양식 음식점":37,"기타 동남아식 전문":20,"분류 안된 외국식 음식점":2}},"경상북도":{"total":143581,"kinds":{"소매":37499,"과학·기술":8035,"음식":51674,"시설관리·임대":5397,"보건의료":943,"예술·스포츠":5531,"교육":5768,"수리·개인":18223,"숙박":6804,"부동산":3707},"food":{"백반/한정식":12894,"카페":7461,"피자":819,"빵/도넛":1626,"버거":264,"일식 회/초밥":690,"구내식당":494,"횟집":1439,"경양식":734,"닭/오리고기 구이/찜":686,"치킨":2599,"냉면/밀면":280,"해산물 구이/찜":979,"족발/보쌈":437,"국/탕/찌개류":1816,"요리 주점":3134,"생맥주 전문":482,"국수/칼국수":1431,"일반 유흥 주점":1556,"돼지고기 구이/찜":3897,"김밥/만두/분식":2444,"곱창 전골/구이":625,"중국집":1761,"뷔페":132,"그 외 기타 간이 음식점":478,"떡/한과":769,"무도 유흥 주점":58,"소고기 구이/찜":417,"베트남식 전문":239,"아이스크림/빙수":134,"기타 한식 음식점":170,"기타 서양식 음식점":16,"기타 동남아식 전문":20,"복 요리 전문":80,"토스트/샌드위치/샐러드":139,"전/부침개":40,"마라탕/훠궈":174,"파스타/스테이크":68,"패밀리레스토랑":28,"일식 면 요리":72,"일식 카레/돈가스/덮밥":70,"기타 일식 음식점":22}},"대구광역시":{"total":117392,"kinds":{"소매":30241,"음식":37608,"수리·개인":16304,"교육":6969,"보건의료":1524,"숙박":1119,"예술·스포츠":5023,"과학·기술":10132,"시설관리·임대":4325,"부동산":4147},"food":{"백반/한정식":8081,"마라탕/훠궈":155,"카페":5450,"경양식":814,"빵/도넛":1498,"버거":260,"패밀리레스토랑":26,"국/탕/찌개류":1086,"피자":766,"치킨":1881,"횟집":782,"일식 회/초밥":857,"냉면/밀면":146,"소고기 구이/찜":265,"김밥/만두/분식":2109,"일식 카레/돈가스/덮밥":71,"구내식당":388,"생맥주 전문":500,"요리 주점":2734,"중국집":1183,"일반 유흥 주점":1132,"국수/칼국수":1087,"베트남식 전문":235,"닭/오리고기 구이/찜":445,"돼지고기 구이/찜":2675,"떡/한과":482,"그 외 기타 간이 음식점":357,"곱창 전골/구이":492,"해산물 구이/찜":507,"토스트/샌드위치/샐러드":130,"족발/보쌈":331,"아이스크림/빙수":126,"일식 면 요리":68,"파스타/스테이크":99,"무도 유흥 주점":61,"뷔페":80,"복 요리 전문":63,"기타 동남아식 전문":14,"기타 한식 음식점":88,"전/부침개":21,"기타 일식 음식점":25,"기타 서양식 음식점":37,"분류 안된 외국식 음식점":1}},"대전광역시":{"total":80059,"kinds":{"예술·스포츠":3618,"음식":23628,"소매":20065,"교육":5380,"수리·개인":10917,"과학·기술":7368,"숙박":881,"시설관리·임대":3484,"부동산":2783,"보건의료":1935},"food":{"국수/칼국수":755,"백반/한정식":5053,"소고기 구이/찜":210,"카페":3809,"경양식":558,"피자":531,"버거":191,"패밀리레스토랑":13,"국/탕/찌개류":888,"김밥/만두/분식":1395,"빵/도넛":876,"일식 회/초밥":621,"구내식당":163,"베트남식 전문":141,"요리 주점":1398,"마라탕/훠궈":133,"치킨":1193,"돼지고기 구이/찜":1699,"생맥주 전문":440,"중국집":721,"토스트/샌드위치/샐러드":113,"일반 유흥 주점":264,"횟집":402,"닭/오리고기 구이/찜":226,"해산물 구이/찜":348,"떡/한과":266,"그 외 기타 간이 음식점":173,"일식 면 요리":78,"곱창 전골/구이":193,"기타 한식 음식점":77,"족발/보쌈":207,"일식 카레/돈가스/덮밥":73,"아이스크림/빙수":77,"기타 동남아식 전문":12,"냉면/밀면":97,"파스타/스테이크":70,"전/부침개":23,"복 요리 전문":19,"무도 유흥 주점":18,"뷔페":56,"기타 서양식 음식점":39,"기타 일식 음식점":9}},"부산광역시":{"total":158513,"kinds":{"소매":38598,"음식":53269,"교육":7967,"예술·스포츠":6048,"숙박":3131,"수리·개인":21007,"과학·기술":13951,"시설관리·임대":6188,"보건의료":2336,"부동산":6018},"food":{"백반/한정식":10564,"버거":352,"카페":7252,"경양식":1344,"빵/도넛":1964,"곱창 전골/구이":478,"피자":1041,"국/탕/찌개류":1512,"족발/보쌈":501,"김밥/만두/분식":2706,"중국집":1735,"일식 회/초밥":1331,"베트남식 전문":294,"일식 카레/돈가스/덮밥":192,"구내식당":515,"패밀리레스토랑":27,"횟집":1956,"돼지고기 구이/찜":3547,"요리 주점":4390,"해산물 구이/찜":1045,"치킨":2533,"생맥주 전문":870,"닭/오리고기 구이/찜":404,"일반 유흥 주점":2392,"냉면/밀면":406,"국수/칼국수":1314,"복 요리 전문":29,"떡/한과":601,"토스트/샌드위치/샐러드":200,"아이스크림/빙수":176,"소고기 구이/찜":297,"파스타/스테이크":90,"그 외 기타 간이 음식점":494,"일식 면 요리":140,"마라탕/훠궈":202,"기타 동남아식 전문":29,"기타 서양식 음식점":39,"뷔페":93,"기타 일식 음식점":61,"기타 한식 음식점":61,"무도 유흥 주점":47,"전/부침개":44,"분류 안된 외국식 음식점":1}},"서울특별시":{"total":550172,"kinds":{"소매":110374,"예술·스포츠":20832,"음식":140026,"교육":43997,"수리·개인":53426,"시설관리·임대":26097,"과학·기술":99978,"숙박":12262,"부동산":24539,"보건의료":18641},"food":{"백반/한정식":26199,"카페":22578,"피자":3413,"일식 면 요리":597,"버거":1042,"베트남식 전문":1607,"빵/도넛":6082,"경양식":5904,"중국집":4683,"치킨":5481,"마라탕/훠궈":796,"해산물 구이/찜":1747,"생맥주 전문":2871,"일식 회/초밥":5953,"국수/칼국수":2917,"패밀리레스토랑":89,"돼지고기 구이/찜":7797,"국/탕/찌개류":4757,"구내식당":895,"횟집":1976,"김밥/만두/분식":8035,"소고기 구이/찜":905,"닭/오리고기 구이/찜":1240,"토스트/샌드위치/샐러드":795,"전/부침개":185,"떡/한과":1061,"족발/보쌈":1188,"파스타/스테이크":515,"일반 유흥 주점":2358,"요리 주점":10658,"일식 카레/돈가스/덮밥":541,"그 외 기타 간이 음식점":1415,"곱창 전골/구이":1332,"기타 서양식 음식점":347,"무도 유흥 주점":97,"아이스크림/빙수":523,"냉면/밀면":634,"복 요리 전문":75,"분류 안된 외국식 음식점":36,"기타 일식 음식점":131,"기타 동남아식 전문":129,"기타 한식 음식점":276,"뷔페":166}},"세종특별자치시":{"total":15655,"kinds":{"소매":3046,"음식":4962,"수리·개인":1628,"교육":1610,"과학·기술":1483,"예술·스포츠":753,"보건의료":234,"시설관리·임대":719,"부동산":1098,"숙박":122},"food":{"백반/한정식":999,"피자":134,"카페":847,"뷔페":16,"버거":55,"경양식":128,"김밥/만두/분식":278,"닭/오리고기 구이/찜":63,"빵/도넛":237,"국/탕/찌개류":236,"돼지고기 구이/찜":274,"토스트/샌드위치/샐러드":35,"치킨":277,"해산물 구이/찜":84,"요리 주점":185,"일식 회/초밥":125,"중국집":179,"곱창 전골/구이":50,"그 외 기타 간이 음식점":48,"패밀리레스토랑":3,"족발/보쌈":52,"떡/한과":35,"일반 유흥 주점":47,"구내식당":39,"기타 한식 음식점":16,"마라탕/훠궈":35,"생맥주 전문":69,"아이스크림/빙수":29,"일식 면 요리":18,"소고기 구이/찜":40,"베트남식 전문":45,"국수/칼국수":139,"횟집":58,"기타 동남아식 전문":7,"냉면/밀면":20,"파스타/스테이크":15,"복 요리 전문":5,"전/부침개":7,"일식 카레/돈가스/덮밥":26,"무도 유흥 주점":1,"기타 일식 음식점":3,"기타 서양식 음식점":3}},"울산광역시":{"total":54285,"kinds":{"수리·개인":7635,"소매":12492,"과학·기술":3558,"음식":19520,"교육":3012,"예술·스포츠":2523,"숙박":1052,"시설관리·임대":2112,"보건의료":514,"부동산":1867},"food":{"빵/도넛":643,"백반/한정식":4368,"일식 회/초밥":355,"카페":2532,"경양식":359,"버거":135,"피자":344,"국/탕/찌개류":701,"횟집":585,"돼지고기 구이/찜":1584,"요리 주점":1347,"치킨":1037,"생맥주 전문":288,"국수/칼국수":492,"중국집":557,"김밥/만두/분식":926,"해산물 구이/찜":362,"일반 유흥 주점":913,"족발/보쌈":185,"기타 한식 음식점":42,"패밀리레스토랑":11,"닭/오리고기 구이/찜":192,"아이스크림/빙수":49,"베트남식 전문":82,"냉면/밀면":122,"곱창 전골/구이":163,"소고기 구이/찜":142,"토스트/샌드위치/샐러드":73,"무도 유흥 주점":40,"구내식당":162,"그 외 기타 간이 음식점":186,"떡/한과":222,"일식 카레/돈가스/덮밥":40,"뷔페":42,"마라탕/훠궈":91,"기타 일식 음식점":17,"전/부침개":14,"일식 면 요리":49,"복 요리 전문":21,"파스타/스테이크":32,"기타 서양식 음식점":11,"기타 동남아식 전문":4}},"인천광역시":{"total":135703,"kinds":{"소매":31214,"음식":40550,"숙박":3334,"수리·개인":17051,"교육":9633,"과학·기술":12170,"시설관리·임대":5663,"예술·스포츠":6874,"보건의료":3691,"부동산":5523},"food":{"백반/한정식":8176,"카페":5712,"피자":874,"버거":298,"일식 회/초밥":878,"치킨":2066,"빵/도넛":1510,"패밀리레스토랑":19,"경양식":698,"구내식당":602,"떡/한과":360,"뷔페":203,"김밥/만두/분식":2347,"중국집":1382,"마라탕/훠궈":321,"일반 유흥 주점":988,"해산물 구이/찜":859,"닭/오리고기 구이/찜":416,"국/탕/찌개류":1762,"횟집":933,"요리 주점":2864,"국수/칼국수":961,"돼지고기 구이/찜":2475,"일식 카레/돈가스/덮밥":162,"아이스크림/빙수":163,"전/부침개":66,"그 외 기타 간이 음식점":397,"베트남식 전문":311,"생맥주 전문":874,"파스타/스테이크":128,"족발/보쌈":415,"소고기 구이/찜":271,"곱창 전골/구이":359,"토스트/샌드위치/샐러드":173,"일식 면 요리":88,"냉면/밀면":141,"기타 한식 음식점":115,"기타 서양식 음식점":82,"무도 유흥 주점":53,"복 요리 전문":12,"기타 동남아식 전문":26,"기타 일식 음식점":10}},"전남광주통합특별시":{"total":173930,"kinds":{"소매":45930,"수리·개인":23382,"음식":55414,"시설관리·임대":7365,"예술·스포츠":7061,"과학·기술":13590,"교육":7852,"숙박":5774,"보건의료":1793,"부동산":5769},"food":{"백반/한정식":13461,"피자":1032,"카페":8271,"버거":333,"빵/도넛":1792,"경양식":813,"패밀리레스토랑":19,"구내식당":397,"일식 회/초밥":771,"해산물 구이/찜":1005,"김밥/만두/분식":2671,"요리 주점":4345,"일반 유흥 주점":1869,"떡/한과":933,"돼지고기 구이/찜":3635,"국수/칼국수":658,"횟집":1598,"중국집":1491,"족발/보쌈":471,"생맥주 전문":1529,"일식 카레/돈가스/덮밥":101,"치킨":2649,"국/탕/찌개류":2239,"아이스크림/빙수":149,"그 외 기타 간이 음식점":448,"냉면/밀면":143,"소고기 구이/찜":394,"닭/오리고기 구이/찜":475,"기타 한식 음식점":182,"파스타/스테이크":86,"곱창 전골/구이":289,"마라탕/훠궈":220,"베트남식 전문":251,"일식 면 요리":90,"무도 유흥 주점":99,"뷔페":107,"전/부침개":78,"토스트/샌드위치/샐러드":190,"기타 서양식 음식점":50,"복 요리 전문":43,"기타 동남아식 전문":17,"기타 일식 음식점":20}},"전북특별자치도":{"total":97931,"kinds":{"소매":28172,"음식":30665,"교육":4547,"과학·기술":6847,"숙박":3177,"예술·스포츠":3959,"시설관리·임대":4050,"수리·개인":12627,"보건의료":875,"부동산":3012},"food":{"국/탕/찌개류":1136,"백반/한정식":7654,"버거":166,"빵/도넛":1097,"돼지고기 구이/찜":1804,"카페":4827,"피자":598,"경양식":569,"소고기 구이/찜":257,"패밀리레스토랑":18,"김밥/만두/분식":1569,"중국집":1093,"일식 면 요리":97,"치킨":1524,"국수/칼국수":716,"일반 유흥 주점":777,"전/부침개":26,"그 외 기타 간이 음식점":304,"요리 주점":1794,"닭/오리고기 구이/찜":194,"일식 회/초밥":466,"떡/한과":563,"족발/보쌈":279,"해산물 구이/찜":529,"횟집":657,"곱창 전골/구이":146,"생맥주 전문":657,"베트남식 전문":133,"토스트/샌드위치/샐러드":88,"마라탕/훠궈":121,"뷔페":88,"아이스크림/빙수":82,"구내식당":216,"일식 카레/돈가스/덮밥":63,"냉면/밀면":127,"기타 서양식 음식점":15,"복 요리 전문":15,"무도 유흥 주점":37,"기타 한식 음식점":103,"기타 동남아식 전문":9,"파스타/스테이크":38,"기타 일식 음식점":13}},"제주특별자치도":{"total":58438,"kinds":{"소매":12227,"수리·개인":5086,"음식":19471,"숙박":7441,"예술·스포츠":1870,"시설관리·임대":3192,"과학·기술":4196,"교육":2833,"보건의료":371,"부동산":1751},"food":{"백반/한정식":4827,"카페":3008,"생맥주 전문":233,"피자":381,"빵/도넛":762,"경양식":635,"닭/오리고기 구이/찜":109,"패밀리레스토랑":6,"김밥/만두/분식":817,"아이스크림/빙수":37,"돼지고기 구이/찜":1498,"버거":92,"구내식당":84,"국/탕/찌개류":544,"요리 주점":1519,"일반 유흥 주점":881,"횟집":609,"족발/보쌈":86,"떡/한과":142,"중국집":479,"치킨":662,"일식 회/초밥":426,"국수/칼국수":539,"그 외 기타 간이 음식점":197,"해산물 구이/찜":201,"곱창 전골/구이":103,"토스트/샌드위치/샐러드":38,"파스타/스테이크":39,"소고기 구이/찜":91,"베트남식 전문":113,"냉면/밀면":63,"마라탕/훠궈":68,"일식 카레/돈가스/덮밥":21,"복 요리 전문":14,"일식 면 요리":32,"기타 서양식 음식점":16,"기타 한식 음식점":35,"전/부침개":7,"무도 유흥 주점":6,"기타 동남아식 전문":10,"뷔페":35,"기타 일식 음식점":6}},"충청남도":{"total":123358,"kinds":{"소매":32641,"음식":40007,"교육":6476,"숙박":4779,"시설관리·임대":5559,"예술·스포츠":5129,"수리·개인":14795,"과학·기술":7965,"보건의료":2142,"부동산":3865},"food":{"빵/도넛":1297,"백반/한정식":9778,"피자":771,"카페":5271,"구내식당":371,"돼지고기 구이/찜":2616,"버거":249,"요리 주점":2174,"경양식":609,"곱창 전골/구이":361,"치킨":2050,"김밥/만두/분식":1988,"냉면/밀면":177,"아이스크림/빙수":108,"국/탕/찌개류":1709,"족발/보쌈":347,"횟집":1101,"국수/칼국수":1163,"일식 회/초밥":597,"일반 유흥 주점":1086,"해산물 구이/찜":734,"토스트/샌드위치/샐러드":149,"중국집":1502,"그 외 기타 간이 음식점":376,"뷔페":211,"떡/한과":641,"닭/오리고기 구이/찜":386,"소고기 구이/찜":372,"생맥주 전문":715,"기타 한식 음식점":231,"베트남식 전문":234,"복 요리 전문":22,"파스타/스테이크":80,"마라탕/훠궈":214,"전/부침개":29,"패밀리레스토랑":19,"일식 면 요리":79,"무도 유흥 주점":53,"일식 카레/돈가스/덮밥":87,"기타 서양식 음식점":24,"기타 일식 음식점":9,"기타 동남아식 전문":17}},"충청북도":{"total":92816,"kinds":{"소매":23678,"음식":30952,"과학·기술":5879,"수리·개인":11537,"시설관리·임대":4277,"보건의료":1649,"예술·스포츠":4220,"교육":5202,"숙박":2627,"부동산":2795},"food":{"백반/한정식":7451,"피자":545,"카페":4139,"빵/도넛":991,"치킨":1595,"구내식당":330,"경양식":494,"버거":192,"국/탕/찌개류":1385,"김밥/만두/분식":1694,"중국집":1133,"돼지고기 구이/찜":2270,"일식 회/초밥":476,"일반 유흥 주점":721,"해산물 구이/찜":544,"요리 주점":1776,"생맥주 전문":594,"일식 카레/돈가스/덮밥":67,"국수/칼국수":901,"아이스크림/빙수":91,"횟집":473,"족발/보쌈":294,"마라탕/훠궈":153,"떡/한과":376,"토스트/샌드위치/샐러드":101,"뷔페":168,"닭/오리고기 구이/찜":394,"베트남식 전문":190,"곱창 전골/구이":240,"기타 한식 음식점":192,"그 외 기타 간이 음식점":326,"냉면/밀면":103,"소고기 구이/찜":255,"파스타/스테이크":68,"일식 면 요리":79,"전/부침개":36,"복 요리 전문":16,"기타 서양식 음식점":30,"무도 유흥 주점":36,"기타 동남아식 전문":11,"패밀리레스토랑":9,"기타 일식 음식점":13}}};
+
+const KIND_COLOR = {"음식":"#d62728","소매":"#1f77b4","수리·개인":"#2ca02c","과학·기술":"#9467bd","교육":"#ff7f0e","시설관리·임대":"#8c564b","예술·스포츠":"#e377c2","부동산":"#17becf","숙박":"#bcbd22","보건의료":"#7f7f7f"};
+const NEUTRAL = "#4c72b0", SELBAR = "#173f5f";
+
+/* 전국 집계 */
+const NATION = {name:"전국", total:0, kinds:{}, food:{}};
+for (const [name, d] of Object.entries(DATA)) {
+  NATION.total += d.total;
+  for (const k in d.kinds) NATION.kinds[k] = (NATION.kinds[k] || 0) + d.kinds[k];
+  for (const k in d.food) NATION.food[k] = (NATION.food[k] || 0) + d.food[k];
+}
+const REGIONS = Object.keys(DATA).sort((a, b) => DATA[b].total - DATA[a].total);
+const KINDS = Object.keys(NATION.kinds).sort((a, b) => NATION.kinds[b] - NATION.kinds[a]);
+let sel = "전국";
+
+const $ = id => document.getElementById(id);
+const fmt = n => n.toLocaleString("ko-KR");
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const pct = (a, b) => (a / b * 100);
+const pf = (a, b) => pct(a, b).toFixed(1) + "%";
+
+function cur() { return sel === "전국" ? NATION : Object.assign({name: sel}, DATA[sel]); }
+
+/* ---- 그래프 공용 ---- */
+function niceTicks(maxV) {
+  const raw = maxV / 4;
+  const mag = Math.pow(10, Math.floor(Math.log10(raw || 1)));
+  const n = raw / mag;
+  const step = (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * mag;
+  const top = Math.max(step, Math.ceil(maxV / step) * step);
+  const t = [];
+  for (let v = 0; v <= top + step * 1e-9; v += step) t.push(v);
+  return t;
+}
+function svgOpen(rows, rowH, left) { return '<svg viewBox="0 0 760 ' + (14 + rows * rowH + 26) + '">'; }
+
+function hbar(items, opts) { /* items: [{label,value,color,dim,on}] */
+  const rowH = opts.rowH || 36, W = 760;
+  const left = opts.left, right = opts.right || 96;
+  const ticks = niceTicks(Math.max(...items.map(d => d.value)));
+  const top = ticks[ticks.length - 1];
+  const plotW = W - left - right;
+  const H = 14 + items.length * rowH + 28;
+  let s = '<svg viewBox="0 0 ' + W + ' ' + H + '">';
+  for (const t of ticks) {
+    const x = left + t / top * plotW;
+    s += '<line class="gl" x1="' + x + '" y1="6" x2="' + x + '" y2="' + (H - 20) + '"/>';
+    s += '<text class="tick" x="' + x + '" y="' + (H - 6) + '" text-anchor="middle">' + fmt(t) + '</text>';
+  }
+  items.forEach((d, i) => {
+    const y = 14 + i * rowH;
+    const bw = Math.max(1.2, d.value / top * plotW);
+    const op = d.dim ? ' opacity=".38"' : "";
+    s += '<text class="lbl' + (d.on ? " on" : "") + '" x="' + (left - 8) + '" y="' + (y + rowH / 2 + 4.5) + '" text-anchor="end"' + op + '>' + esc(d.label) + '</text>';
+    s += '<rect x="' + left + '" y="' + (y + 5) + '" width="' + bw + '" height="' + (rowH - 10) + '" rx="3" fill="' + d.color + '"' + op + '><title>' + esc(d.label) + ': ' + fmt(d.value) + '개</title></rect>';
+    s += '<text class="val" x="' + (left + bw + 6) + '" y="' + (y + rowH / 2 + 4.5) + '"' + op + '>' + fmt(d.value) + (opts.pct ? ' (' + pf(d.value, opts.pct) + ')' : "") + '</text>';
+  });
+  return s + '</svg>';
+}
+
+function stacked(rows, selName) { /* rows: [{name,total,kinds}] */
+  const rowH = 32, W = 760, left = 148, right = 86;
+  const maxT = Math.max(...rows.map(r => r.total));
+  const plotW = W - left - right;
+  const H = 14 + rows.length * rowH + 28;
+  let s = '<svg viewBox="0 0 ' + W + ' ' + H + '">';
+  const ticks = niceTicks(maxT);
+  for (const t of ticks) {
+    const x = left + t / maxT * plotW;
+    s += '<line class="gl" x1="' + x + '" y1="6" x2="' + x + '" y2="' + (H - 20) + '"/>';
+    s += '<text class="tick" x="' + x + '" y="' + (H - 6) + '" text-anchor="middle">' + fmt(t) + '</text>';
+  }
+  rows.forEach((r, i) => {
+    const y = 14 + i * rowH;
+    const dim = selName && r.name !== selName;
+    const op = dim ? ' opacity=".35"' : "";
+    s += '<text class="lbl' + (!dim && selName ? " on" : "") + '" x="' + (left - 8) + '" y="' + (y + rowH / 2 + 4.5) + '" text-anchor="end"' + op + '>' + esc(r.name) + '</text>';
+    let x = left;
+    for (const k of KINDS) {
+      const v = r.kinds[k] || 0;
+      if (!v) continue;
+      const w = Math.max(0.8, v / maxT * plotW);
+      s += '<rect x="' + x.toFixed(1) + '" y="' + (y + 5) + '" width="' + w.toFixed(1) + '" height="' + (rowH - 10) + '" fill="' + KIND_COLOR[k] + '"' + op + '><title>' + esc(r.name) + ' · ' + esc(k) + ': ' + fmt(v) + '개 (' + pf(v, r.total) + ')</title></rect>';
+      x += w;
+    }
+    s += '<text class="val" x="' + (left + r.total / maxT * plotW + 6) + '" y="' + (y + rowH / 2 + 4.5) + '"' + op + '>' + fmt(r.total) + '</text>';
+  });
+  return s + '</svg>';
+}
+
+function leftFor(labels, unit) {
+  const m = Math.max(...labels.map(l => l.length));
+  return Math.max(70, m * unit + 18);
+}
+
+/* ---- 렌더 ---- */
+function render() {
+  const R = cur();
+  const isNat = sel === "전국";
+
+  $("stTotal").textContent = fmt(NATION.total);
+  $("stSel").textContent = fmt(R.total);
+  $("stSelLab").textContent = isNat ? "전국 가게 수 (현재 선택)" : sel + " 가게 수 · 전국의 " + pf(R.total, NATION.total);
+
+  /* 1. 업종별 */
+  const kindPairs = KINDS.map(k => [k, R.kinds[k] || 0]).sort((a, b) => b[1] - a[1]);
+  $("c1").innerHTML = hbar(kindPairs.map(([k, v]) => ({label: k, value: v, color: KIND_COLOR[k]})),
+                           {left: leftFor(kindPairs.map(p => p[0]), 13), pct: R.total, rowH: 36});
+  $("cap1").textContent = (isNat ? "전국" : sel) + " · 상권업종 대분류 기준";
+  $("i1").textContent = (isNat ? "전국" : sel + "에서는") + " 음식(" + pf(kindPairs[0][1], R.total) + ")와 소매(" + pf(kindPairs[1][1], R.total) + ")가 두 대주류로, 생활밀착형 업종이 상가의 대부분을 차지한다.";
+
+  /* 2. 지역별 */
+  const regPairs = REGIONS.map(n => [n, DATA[n].total]);
+  $("c2").innerHTML = hbar(regPairs.map(([n, v]) => ({
+    label: n, value: v, color: (!isNat && n === sel) ? SELBAR : NEUTRAL,
+    dim: !isNat && n !== sel, on: !isNat && n === sel
+  })), {left: leftFor(regPairs.map(p => p[0]), 12.5), rowH: 33});
+  const rank = REGIONS.indexOf(sel) + 1;
+  $("i2").textContent = isNat
+    ? "경기(24.3%)·서울(20.0%) 등 수도권에만 전체의 절반 가까이가 몰려 있고, 세종은 0.6%로 가장 적다."
+    : sel + "은(는) " + fmt(R.total) + "곳으로 전국의 " + pf(R.total, NATION.total) + "이며 16개 지역 가운데 " + rank + "위다.";
+
+  /* 3. 지역×업종 */
+  $("lg3").innerHTML = KINDS.map(k => '<span><span class="chip" style="background:' + KIND_COLOR[k] + '"></span>' + esc(k) + '</span>').join("");
+  const rows3 = REGIONS.map(n => Object.assign({name: n}, DATA[n]));
+  $("c3").innerHTML = stacked(rows3, isNat ? null : sel);
+  const fs = name => pct((name === "전국" ? NATION : DATA[name]).kinds["음식"] || 0, (name === "전국" ? NATION : DATA[name]).total);
+  if (isNat) {
+    let hi = REGIONS[0], lo = REGIONS[0];
+    for (const n of REGIONS) { if (fs(n) > fs(hi)) hi = n; if (fs(n) < fs(lo)) lo = n; }
+    $("i3").textContent = "음식 업종 비중은 " + hi + "(" + pf(DATA[hi].kinds["음식"], DATA[hi].total) + ")가 가장 높고 " + lo + "(" + pf(DATA[lo].kinds["음식"], DATA[lo].total) + ")가 가장 낮아, 지역마다 상가 구성이 다르다.";
+  } else {
+    const natF = fs("전국"), rF = fs(sel);
+    $("i3").textContent = sel + "의 음식 업종 비중은 " + pf(R.kinds["음식"], R.total) + "로 전국 평균(" + natF.toFixed(1) + "%)보다 " + (rF >= natF ? "높다" : "낮다") + ". 막대를 눌러(마우스를 올려) 업종별 개수를 볼 수 있다.";
+  }
+
+  /* 4. 음식 세부 */
+  const foodPairs = Object.entries(R.food).sort((a, b) => b[1] - a[1]).slice(0, 15);
+  const foodTotal = Object.values(R.food).reduce((a, b) => a + b, 0);
+  $("c4").innerHTML = hbar(foodPairs.map(([k, v]) => ({label: k, value: v, color: KIND_COLOR["음식"]})),
+                           {left: leftFor(foodPairs.map(p => p[0]), 12.5), pct: foodTotal, rowH: 33});
+  $("cap4").textContent = (isNat ? "전국" : sel) + " · 음식점 " + fmt(foodTotal) + "곳 중";
+  $("i4").textContent = (isNat ? "전국 음식점" : sel + "의 음식점") + " 가운데 " + foodPairs[0][0] + "(" + pf(foodPairs[0][1], foodTotal) + ")와 " + foodPairs[1][0] + "(" + pf(foodPairs[1][1], foodTotal) + ")가 두 아로 많다.";
+}
+
+/* ---- 리포트 ---- */
+function reportHTML() {
+  const R = cur(), isNat = sel === "전국";
+  const rank = REGIONS.indexOf(sel) + 1;
+  const kindPairs = KINDS.map(k => [k, R.kinds[k] || 0]).sort((a, b) => b[1] - a[1]);
+  const foodPairs = Object.entries(R.food).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  const foodTotal = Object.values(R.food).reduce((a, b) => a + b, 0);
+  const now = new Date().toLocaleString("ko-KR");
+  const head = isNat ? "전국 (16개 시도 통합)" : sel + " (전국 " + rank + "위 / " + pf(R.total, NATION.total) + ")";
+
+  let kindsRows = kindPairs.map(([k, v], i) =>
+    "<tr><td>" + (i + 1) + "</td><td><span class='chip' style='background:" + KIND_COLOR[k] + "'></span>" + esc(k) + "</td><td class='n'>" + fmt(v) + "</td><td class='n'>" + pf(v, R.total) + "</td></tr>").join("");
+  let foodRows = foodPairs.map(([k, v], i) =>
+    "<tr><td>" + (i + 1) + "</td><td>" + esc(k) + "</td><td class='n'>" + fmt(v) + "</td><td class='n'>" + pf(v, foodTotal) + "</td></tr>").join("");
+
+  const natKind = (k) => pf(NATION.kinds[k] || 0, NATION.total);
+  const interp1 = isNat
+    ? "전국 상가는 음식(" + pf(kindPairs[0][1], R.total) + ")과 소매(" + pf(kindPairs[1][1], R.total) + ")가 절반 가까이 차지하며, 나머지 업종은 모두 12% 미만이다. 생활밀착형 업종이 전국 상가의 주류다."
+    : sel + "에서는 " + kindPairs[0][0] + "(" + pf(kindPairs[0][1], R.total) + ")와 " + kindPairs[1][0] + "(" + pf(kindPairs[1][1], R.total) + ")가 두 대주류이며, 전국 평균 대비 " + kindPairs[0][0] + " 비중은 " + (pct(R.kinds[kindPairs[0][0]], R.total) >= pct(NATION.kinds[kindPairs[0][0]], NATION.total) ? "높다(전국 " + natKind(kindPairs[0][0]) + ")" : "낮다(전국 " + natKind(kindPairs[0][0]) + ")") + ".";
+  const interp2 = isNat
+    ? "경기도(" + pf(DATA["경기도"].total, NATION.total) + ")와 서울특별시(" + pf(DATA["서울특별시"].total, NATION.total) + ") 등 수도권에만 전체의 절반 가까이가 몰려 있다. 가장 적은 지역은 세종특별자치시(" + fmt(DATA["세종특별자치시"].total) + "곳)다."
+    : sel + "의 가게 수는 " + fmt(R.total) + "곳으로 전국의 " + pf(R.total, NATION.total) + "이며, 16개 지역 중 " + rank + "위다. 최다 지역은 경기도(" + fmt(DATA["경기도"].total) + "곳), 최소는 세종특별자치시(" + fmt(DATA["세종특별자치시"].total) + "곳)다.";
+  const interp3 = isNat
+    ? "전국 음식점 " + fmt(foodTotal) + "곳 중 백반/한정식과 카페가 두 아로 압도적이다."
+    : sel + "에는 음식점 " + fmt(foodTotal) + "곳(지역 가게의 " + pf(foodTotal, R.total) + ")이 있으며, " + foodPairs[0][0] + "(" + fmt(foodPairs[0][1]) + "곳)과 " + foodPairs[1][0] + "(" + fmt(foodPairs[1][1]) + "곳)이 가장 많다.";
+
+  return "<!DOCTYPE html><html lang='ko'><head><meta charset='utf-8'><title>분석 리포트 — " + esc(head) + "</title><style>"
+    + "body{font-family:'NanumGothic','Malgun Gothic','Apple SD Gothic Neo',sans-serif;color:#222;max-width:860px;margin:30px auto;padding:0 20px;line-height:1.6}"
+    + "h1{font-size:22px;border-bottom:3px solid #173f5f;padding-bottom:8px}h2{font-size:16px;margin:26px 0 8px;color:#173f5f}"
+    + ".meta{color:#667;font-size:13px}.big{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}"
+    + ".big div{border:1px solid #e3e3dc;border-radius:10px;padding:12px 16px;background:#fafaf5}"
+    + ".big b{display:block;font-size:24px}.big span{font-size:12px;color:#667}"
+    + "table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{border-bottom:1px solid #e3e3dc;padding:7px 9px;text-align:left}"
+    + "th{background:#f2f2ec}td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}"
+    + ".chip{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px}"
+    + "p.note{font-size:12.5px;color:#667;background:#f5f5ee;border-radius:8px;padding:9px 12px}"
+    + "</style></head><body>"
+    + "<h1>상가(상권)정보 분석 리포트 — " + esc(head) + "</h1>"
+    + "<p class='meta'>생성: " + now + " · 자료: 소상공인시장진흥공단 상가(상권)정보 202606 (정리본) · 대시보드에서 선택한 지역 기준</p>"
+    + "<div class='big'>"
+    + "<div><b>" + fmt(R.total) + "</b><span>가게 수</span></div>"
+    + "<div><b>" + (isNat ? "16" : rank + "위") + "</b><span>" + (isNat ? "지역 수" : "전국 내 순위") + "</span></div>"
+    + "<div><b>" + (isNat ? "100%" : pf(R.total, NATION.total)) + "</b><span>전국 비중</span></div>"
+    + "<div><b>" + fmt(foodTotal) + "</b><span>음식점 수</span></div>"
+    + "</div>"
+    + "<h2>한눈에 보는 해석</h2>"
+    + "<p>① " + interp1 + "</p><p>② " + interp2 + "</p><p>③ " + interp3 + "</p>"
+    + "<h2>업종별 가게 수</h2>"
+    + "<table><thead><tr><th>순위</th><th>업종</th><th class='n'>가게 수</th><th class='n'>비중</th></tr></thead><tbody>" + kindsRows + "</tbody></table>"
+    + "<h2>음식점 세부 종류 TOP 10</h2>"
+    + "<table><thead><tr><th>순위</th><th>세부 종류</th><th class='n'>가게 수</th><th class='n'>음식점 내 비중</th></tr></thead><tbody>" + foodRows + "</tbody></table>"
+    + "<p class='note'>데이터 기준: 원본 2,772,484행(39열)에서 빈 열 제거·층정보 숫자화·주소 지역명 반복 제거·무명 상호 표기('이름 없음' 3,571건)·좌표 범위 확인(이상 0건)·중복 제거(23,415건)를 거쳐 2,749,069행(37열)으로 정리됨. 이 문서는 인터넷 연결 없이 열 수 있습니다.</p>"
+    + "</body></html>";
+}
+
+function downloadReport() {
+  const blob = new Blob(["\ufeff", reportHTML()], {type: "text/html;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "분석리포트_" + (sel === "전국" ? "전국" : sel) + ".html";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 500);
+}
+
+/* ---- 초기화 ---- */
+const selEl = $("regionSel");
+selEl.innerHTML = '<option value="전국">전국 (16개 지역 통합)</option>'
+  + REGIONS.map(n => '<option value="' + esc(n) + '">' + esc(n) + " (" + fmt(DATA[n].total) + ")</option>").join("");
+selEl.addEventListener("change", () => { sel = selEl.value; render(); });
+$("reportBtn").addEventListener("click", downloadReport);
+render();
+</script>
+
+
+</body></html>
