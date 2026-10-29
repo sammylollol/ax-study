@@ -217,8 +217,54 @@ print(res.json())
 --------------------------------------------
 {'amount': 1.0, 'base': 'USD', 'date': '2026-10-28', 'rates': {'EUR': 0.89823, 'JPY': 157.96, 'KRW': 1340.47}}
 ------------------------------------------------------------------------
-#9
+#10
+# API 공개값 호출
+import requests
+
+#데이터를 가져올 open api의 url주소를 변수에 저장
+#미국 달러 기준 대한민국 원화, 일본 엔화, 유로화의 환율 정보를 제공하는 api 경로입니다.
+url="https://api.frankfurter.dev/v1/latest?base=USD&symbols=KRW,JPY,EUR"
+
+#requests.get()함수를 사용해 해당 url에 get 요청을 보내고 서버의 응답을 res 변수에 저장.
+res= requests.get(url)
+
+#서버로부터 받은 응담 데이터를 json 형식 (딕셔너리 형태) 및 쿠키 정보를 출력
+print(res.json()) #api 서버가 돌려준 환율 데이터 전체 출력
+print(res.cookies.items) #서버가 보낸 쿠키 정보 출력
+
+data= res.json() #json 형식의 응답 데이터를 파이썬 딕셔너리 객체로 변환해 data 변수에 저장.
+
+#[참고] api가 반환하는 데이터의 구조 예시 (주석 처리)
+
+"""
+{
+  'amount': 1.0, 'base': 'USD',
+  'date': '2026-10-28',
+  'rates': {'EUR': 0.89823,
+  'JPY': 157.96,
+  'KRW': 1340.47
+  }
+}
+"""
+
+print(data["rates"]) # 가져온 데이터 중에서 환율 정보가 담긴 'rates' 딕셔너리만 선택하여 출력
+
+
+print(data["rates"]["KRW"]) # 'rates' 안에서 특정 통화의 환율 값만 접근하여 출력
+print(f'KRW : {data["rates"]["KRW"]}') # f-string(포맷팀 문자열)을 활용해 보기 좋게 포맷팅해 출력
+print(f'JPY : {data["rates"]["JPY"]}') 
+
+#유료화
+print(f'EUR : {data["rates"]["EUR"]}') #[실습] 유로화(eur) 환율 정보 출력하기
 
 
 --------------------------------------------
+{'amount': 1.0, 'base': 'USD', 'date': '2026-10-28', 'rates': {'EUR': 0.89823, 'JPY': 157.96, 'KRW': 1340.47}}
+<bound method RequestsCookieJar.items of <RequestsCookieJar[]>>
+{'EUR': 0.89823, 'JPY': 157.96, 'KRW': 1340.47}
+1340.47
+KRW : 1340.47
+JPY : 157.96
+EUR : 0.89823
+
 ------------------------------------------------------------------------
