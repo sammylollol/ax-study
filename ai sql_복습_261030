@@ -1,0 +1,176 @@
+-- 이 줄은 한글이 깨지지 않게 하는 설정입니다. 지우지 마세요.
+SET NAMES utf8mb4;
+
+-- 어떤 데이터 베이스가 서버에 설치되어 있는지 보기 위해서.
+show databases;
+
+-- 1. 어떤 표가 있는지 봅니다. 그대로 「실행」을 누르세요.
+SHOW TABLES;
+
+-- 구조만 보기 
+DESC 고객명단; -- 고객 명단 테이블의 구조를 확인 
+
+-- 실제 데이터 보기 data frame 
+SELECT * FROM 고객명단 
+WHERE 등급 = 'vip' 
+ORDER BY 최근구매일 DESC
+limit 3;
+
+-- VIP 고객 
+SELECT SUM(누적구매액)
+FROM 고객명단
+WHERE 등급 = 'VIP';
+
+-- 전체고객 합계와 판매 갯수 
+SELECT COUNT(*), SUM(누적구매액)
+FROM 고객명단;
+
+--
+
+DESC 문의접수;
+SELECT * FROM 문의접수 LIMIT 5; 
+SELECT * FROM 문의접수 order by 이름 asc
+limit 4;
+
+DESC 이벤트응모;
+SELECT * FROM 이벤트응모 
+WHERE 관심분야 = '신제품 체험단' 
+ORDER BY 타임스탬프 desc
+LIMIT 3;
+
+--
+
+DESC 일일지표;
+SELECT * FROM 일일지표 LIMIT 5; 
+
+-- 응용 
+DESC 일일지표;
+
+SELECT SUM(주문건수) AS '총 주문건수'
+FROM 일일지표;
+
+SELECT SUM(주문건수) AS '총 판매금액'
+FROM 일일지표;
+
+SELECT SUM(광고비) AS '총 광고비 비용'
+FROM 일일지표;
+
+-- 응용 2, 순이익 구하는 법
+SELECT SUM(매출)-SUM(광고비) AS '총 순이익'
+FROM 일일지표;
+
+--
+
+DESC 콘텐츠일정;
+SELECT * FROM 콘텐츠일정 LIMIT 5; 
+
+-- ① VIP 고객은 몇 명이고, 누적구매액 합계는 얼마인가요?
+
+
+-- ② 인스타그램으로 가입한 고객의 이름은?-- ① VIP 고객 수와 누적구매액 합계
+SELECT COUNT(*) AS VIP_고객수,
+       SUM(누적구매액) AS VIP_누적구매액_합계
+FROM 고객명단
+WHERE 등급 = 'VIP';
+
+-- ② 인스타그램으로 가입한 고객의 이름
+SELECT 이름
+FROM 고객명단
+WHERE 가입경로 = '인스타그램';
+
+-- 어떤 테이블의 값을 범주화 하고 싶을 때 GROUP BY를 씀.
+SELECT 가입경로
+FROM 고객명단
+GROUP BY 가입경로;
+
+-- 위의 표에 가입자 수 추가로 알고 싶은 경우 
+SELECT 가입경로, COUNT(*) AS '가입자수'
+FROM 고객명단
+GROUP BY 가입경로;
+
+-- 위의 표에 가입 경로를 가나다 순으로 정렬하고 싶은 경우
+SELECT 가입경로, COUNT(*) AS '가입자수'
+FROM 고객명단
+GROUP BY 가입경로
+ORDER BY 가입경로 ASC;
+
+
+-- ③ 미처리 문의를 담당자별로 집계
+SELECT 담당자,
+       COUNT(*) AS 미처리_문의수
+FROM 문의접수
+WHERE 상태 = '미처리'
+GROUP BY 담당자
+ORDER BY 미처리_문의수 DESC, 담당자 ASC;
+
+-- ④ 매출이 가장 높았던 날과 그날 매출
+SELECT 날짜, 매출
+FROM 일일지표
+ORDER BY 매출 DESC
+LIMIT 1;
+
+-- ⑤ 이벤트 응모자 중 휴면 고객의 이름과 관심분야는? 
+
+-- JOIN... 데이터정규화.(정리가 잘되어 있고, 중복이 없는 데이터 셋)
+
+/**
+SELECT e.이름,
+       e.관심분야
+FROM 이벤트응모 e
+JOIN 고객명단 c ON e.이메일 = c.이메일
+WHERE c.등급 = '휴면';
+*/
+
+DESC 고객명단;
+DESC 이벤트응모;
+
+-- 고객명단과 이벤트응모 테이블의 공통 KEY인 이메일을 매개로 INNER JOIN 하는 방법.
+-- INNER JOIN (기준, 두 테일블의 공통분모_교집합) ; 두 테이블의 공통 데이터만 결합.
+-- 쿼리문에서 왼쪽(먼저 쓴) 테이블의 데이터를 무조건 다 보여주고, 오른쪽 테이블은 매칭되는 값이 있을 때만 가져옵니다. 
+-- 용도 ; 진짜 회원 중 이벤트 응모자만 보
+
+SELECT A.이름, A.관심분야 AS '관심분야에요'
+FROM 이벤트응모 A 
+JOIN 고객명단 G ON A.이메일 = G.이메일;
+
+-- LIGHT JOIN (기준,왼쪽 테이블 전) ; 왼쪽 테이블 전체 + 오른쪽 매칭 데이터 결합
+-- 쿼리문에서 왼쪽(먼저 쓴) 테이블의 데이터를 무조건 다 보여주고, 오른쪽 테이블은 매칭되는 값이 있을 때만 가져옵니다. 
+-- 용도 ; 전체 회원의 이벤트 참여 여부 확인
+
+SELECT A.이름, A.관심분야 AS '관심분야(LEFT)'
+FROM 이벤트응모 A 
+LEFT JOIN 고객명단 G ON A.이메일 = G.이메일;
+
+-- RIGHT JOIN (기준,오른쪽 테이블 전체) ; 오른쪽 테이블 전체 + 왼쪽 매칭 데이터 결합
+-- 쿼리문에서 오른쪽(나중에 쓴) 테이블을 기준으로 삼아 오른쪽 데이터는 무조건 다 보여주고, 왼쪽 테이블은 매칭되는 값이 있을 때만 가져오는 방식입니다.
+-- 매칭 안 된 우측 데이터는 NULL로 채워서 출력
+-- 용도 ; 이벤트 응모자 중 비회원/회원 식별
+
+SELECT A.이름, A.관심분야 AS '관심분야(RIGHT)'
+FROM 이벤트응모 A 
+RIGHT JOIN 고객명단 G ON A.이메일 = G.이메일;
+
+--  RIGHT JOIN 중 회원/비회원 여부만 따로 적용하려면?
+-- 이벤트에 참여하지 않은 "일반 회원"만 골라내기
+SELECT G.이름, G.이메일, G.등급
+FROM 이벤트응모 A 
+RIGHT JOIN 고객명단 G ON A.이메일 = G.이메일
+WHERE A.이메일 IS NULL; -- 👈 이벤트 응모 기록이 없는 사람만 필터링
+
+-- 이벤트에 참여한 "진짜 회원"만 골라내기 (INNER JOIN과 동일)
+SELECT G.이름, G.이메일, A.관심분야 AS '관심분야(RIGHT)'
+FROM 이벤트응모 A 
+RIGHT JOIN 고객명단 G ON A.이메일 = G.이메일
+WHERE A.이메일 IS NOT NULL; -- 👈 이벤트 응모 기록이 확실히 있는 사람만 필터링
+
+-- 한 화면에서 '회원/비회원' 글자로 글자로 변환해서 한눈에 보고 싶다면?
+SELECT 
+    G.이름, 
+    G.이메일,
+    CASE 
+        WHEN A.이메일 IS NULL THEN '미참여자'
+        ELSE '이벤트 참여자'
+    END AS '이벤트 참여여부'
+FROM 이벤트응모 A 
+RIGHT JOIN 고객명단 G ON A.이메일 = G.이메일;
+
