@@ -172,5 +172,13 @@ SELECT
         ELSE '이벤트 참여자'
     END AS '이벤트 참여여부'
 FROM 이벤트응모 A 
+
+
+
+select count(distinct 담당자)
+from 문의접수;
+
+
+
 RIGHT JOIN 고객명단 G ON A.이메일 = G.이메일;
 
